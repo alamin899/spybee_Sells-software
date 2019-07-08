@@ -59,6 +59,7 @@
                         <strong><i class="fa fa-book mr-1"></i> Role</strong>
 
                         <p class="text-muted">
+                            {{$users->role}}
 
 
                         </p>
@@ -67,7 +68,7 @@
 
                         <strong><i class="fa fa-map-marker mr-1"></i> Location</strong>
 
-                        <p class="text-muted"></p>
+                        <p class="text-muted">{{$users->address}}</p>
 
 
                     </div>
@@ -95,12 +96,12 @@
                                     <div class="row">
                                         <div class="col-md-6 row">
                                             <div class="col-md-6"><b>Full Name:</b></div>
-                                            <div class="col-md-6"><span>{{$users->username}}</span></div>
+                                            <div class="col-md-6"><span>{{$users->name}}</span></div>
 
                                         </div>
                                         <div class="col-md-6 row">
                                             <div class="col-md-6"><b>Email adresse:</b></div>
-                                            <div class="col-md-6"><span>{{$users->useremail}}</span></div>
+                                            <div class="col-md-6"><span>{{$users->email}}</span></div>
                                         </div>
                                     </div>
                                     <hr>
@@ -108,12 +109,12 @@
                                     <div class="row">
                                         <div class="col-md-6 row">
                                             <div class="col-md-6"><b>Contact Number:</b></div>
-                                            <div class="col-md-6"><span>{{$users->phone1}}</span></div>
+                                            <div class="col-md-6"><span>{{$users->phone}}</span></div>
 
                                         </div>
                                         <div class="col-md-6 row">
-                                            <div class="col-md-6"><b>Alt. Contact Number:</b></div>
-                                            <div class="col-md-6"><span>{{$users->phone2}}</span></div>
+                                            <div class="col-md-6"><b>Id_No</b></div>
+                                            <div class="col-md-6"><span>{{$users->id_no}}</span></div>
 
                                         </div>
 
@@ -122,20 +123,9 @@
 
                                     <div class="row">
                                         <div class="col-md-6 row">
-                                            <div class="col-md-6"><b>National Id:</b></div>
-                                            <div class="col-md-6"><span>{{$users->unid}}</span></div>
+                                            <div class="col-md-6"><b>Address:</b></div>
+                                            <div class="col-md-6"><span>{{$users->address}}</span></div>
                                         </div>
-                                        <div class="col-md-6 row">
-                                            <div class="col-md-6"><b>Addrress:</b></div>
-                                            <div class="col-md-6"><span>{{$users->useraddress}}</span></div>
-
-                                        </div>
-
-                                    </div>
-                                    <hr>
-
-
-                                    <div class="row">
                                         <div class="col-md-6 row">
                                             <div class="col-md-6"><b>Designation:</b></div>
                                             <div class="col-md-6"><span>{{$users->role}}</span></div>
@@ -143,10 +133,13 @@
                                         </div>
 
                                     </div>
+                                    <hr>
+
 
 
 
                                 </div>
+
                             </div>
                             <!-- /.tab-pane -->
 

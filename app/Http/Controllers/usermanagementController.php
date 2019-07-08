@@ -13,7 +13,7 @@ class usermanagementController extends Controller
         return view('adminPannel.usrmanagement.softwareuser',['roles'=>$roles]);
     }
     public function userlistview(){
-        $users=DB::table('softwareusers')->orderBy('id', 'desc')->get();
+        $users=DB::table('users')->orderBy('id', 'desc')->get();
         return view('adminPannel.usrmanagement.softwareuserlist',['users'=>$users]);
     }
     public function userroleview(){
@@ -29,16 +29,16 @@ class usermanagementController extends Controller
     }
 
     public function insertsofuser(Request $request){
-       $insert=DB::table('softwareusers')->insert(
+       $insert=DB::table('users')->insert(
            [
-               'username'=>$request->username,
-               'useremail'=>$request->useremail,
+               'name'=>$request->name,
+               'email'=>$request->email,
                'role'=>$request->role,
-               'unid'=>$request->unid,
-               'phone1'=>$request->phone1,
-               'phone2'=>$request->phone2,
-               'useraddress'=>$request->useraddress,
-               'profileimage'=>$request->profileimage,
+               'id_no'=>$request->id_no,
+               'phone'=>$request->phone,
+               'password'=>bcrypt($request->password),
+               'address'=>$request->address,
+               'profile_image'=>$request->profile_image,
 
            ]
        );
@@ -100,25 +100,25 @@ class usermanagementController extends Controller
     }
 
     public function indvidview($id){
-        $users=DB::table('softwareusers')->where('id',$id)->first();
+        $users=DB::table('users')->where('id',$id)->first();
         return view('adminPannel.usrmanagement.individualsoftusrview',['users'=>$users]);
     }
     public function indvidedit($id){
         $roles = DB::table('userroles')->get();
-        $users=DB::table('softwareusers')->where('id',$id)->first();
+        $users=DB::table('users')->where('id',$id)->first();
         return view('adminPannel.usrmanagement.updateuser',['users'=>$users],['roles'=>$roles]);
     }
     public function indvidupdate(Request $request){
         $id=$request->id;
 
-        $update=DB::table('softwareusers')->where('id',$id)->update([
-            'username'=>$request->username,
-            'useremail'=>$request->useremail,
+        $update=DB::table('users')->where('id',$id)->update([
+            'name'=>$request->name,
+            'email'=>$request->email,
             'role'=>$request->role,
-            'unid'=>$request->unid,
-            'phone1'=>$request->phone1,
-            'phone2'=>$request->phone2,
-            'useraddress'=>$request->useraddress,
+            'id_no'=>$request->id_no,
+            'phone'=>$request->phone,
+            'address'=>$request->address,
+            'profile_image'=>$request->profile_image,
         ]);
         if ($update){
             return response()->json("success");

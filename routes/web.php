@@ -14,6 +14,9 @@
 Route::get('/', function () {
     return view('login.home.home');
 });
+Route::get('test',function (){
+   return view('adminPannel.vendormanagement.useradd') ;
+});
 
 //for dashbord view by login
 //this is when user inter by login

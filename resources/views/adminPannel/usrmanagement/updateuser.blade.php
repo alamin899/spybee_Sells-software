@@ -20,8 +20,8 @@
                         <img class="profile-user-img img-fluid img-circle"  src="" alt="User profile picture">
                     </div>
 
-                    <h3 class="profile-username text-center">{{$users->username}}</h3>
-                    <h3 class="profile-username text-center">{{$users->useremail}}</h3>
+                    <h3 class="profile-username text-center">{{$users->name}}</h3>
+                    <h3 class="profile-username text-center">{{$users->email}}</h3>
                     <p class="text-muted text-center">Software Engineer</p>
 
 
@@ -92,14 +92,14 @@
                                         <div class="col-md-6 row">
                                             <div class="col-md-6"><b>Full Name:</b></div>
                                             <div class="col-md-6">
-                                                <input type="text" name="username" value="{{$users->username}}">
+                                                <input type="text" name="name" value="{{$users->name}}">
                                             </div>
 
                                         </div>
                                         <div class="col-md-6 row paddingleft">
                                             <div class="col-md-6"><b>Email adresse:</b></div>
                                             <div class="col-md-6">
-                                                <input type="email" name="useremail" value="{{$users->useremail}}">
+                                                <input type="email" name="email" value="{{$users->email}}">
                                             </div>
                                         </div>
                                     </div>
@@ -109,13 +109,13 @@
                                         <div class="col-md-6 row">
                                             <div class="col-md-6"><b>Contact Number:</b></div>
                                             <div class="col-md-6">
-                                                <input type="number" name="phone1" value="{{$users->phone1}}">
+                                                <input type="number" name="phone" value="{{$users->phone}}">
                                             </div>
                                         </div>
                                         <div class="col-md-6 row">
-                                            <div class="col-md-6"><b>Alt. Contact Number:</b></div>
+                                            <div class="col-md-6"><b>Id_No:</b></div>
                                             <div class="col-md-6">
-                                                <input type="number" name="phone2" value="{{$users->phone2}}">
+                                                <input type="text" name="id_no" value="{{$users->id_no}}">
                                             </div>
                                         </div>
 
@@ -124,43 +124,32 @@
                                     <hr>
 
                                     <div class="row">
-                                        <div class="col-md-6 row paddingleft">
-                                            <div class="col-md-6"><b>National Id:</b></div>
-                                            <div class="col-md-6">
-
-                                                <input type="number" name="unid" value="{{$users->unid}}">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 row">
-                                            <div class="col-md-6"><b>Address:</b></div>
-                                            <div class="col-md-6">
-                                                <textarea name="useraddress">{{$users->useraddress}}</textarea>
-
-                                            </div>
-
-                                        </div>
-
-                                    </div>
-                                    <hr>
-
-                                    <div class="row">
-
-                                        <div class="col-md-6 row paddingleft">
+                                        <div class="col-md-6 row ">
                                             <div class="col-md-6"><b>Designation:</b></div>
                                             <div class="col-md-6">
                                                 <select name="role">
                                                     <option>{{$users->role}}</option>
                                                     @foreach($roles as $role)
-                                                    <option value="{{$role->userrole}}">{{$role->userrole}}</option>
-                                                        @endforeach()
+                                                        <option value="{{$role->userrole}}">{{$role->userrole}}</option>
+                                                    @endforeach()
                                                 </select>
-{{--                                                <input type="text" name="role" value="{{$users->role}}">--}}
+                                                {{--                                                <input type="text" name="role" value="{{$users->role}}">--}}
+                                            </div>
+
+                                        </div>
+                                        <div class="col-md-6 row">
+                                            <div class="col-md-6"><b>Address:</b></div>
+                                            <div class="col-md-6">
+                                                <textarea name="address">{{$users->address}}</textarea>
+
                                             </div>
 
                                         </div>
 
                                     </div>
                                     <hr>
+
+
 
                                     <div class="row">
                                         <div class="col-md-6 row ">

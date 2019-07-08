@@ -12,21 +12,22 @@
         <!-- form start -->
         <form role="form" class="form-control" id="softuserform" action="{{route('insertsoftwareuser')}}" method="post">
             {{csrf_field()}}
+            <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
             <div class="row">
                 <div class="col">
                     <label>User Name</label>
-                    <input type="text" class="form-control"  name="username">
+                    <input type="text" class="form-control"  name="name">
                 </div>
                 <div class="col">
                     <label>User Email</label>
-                    <input type="email" class="form-control"  name="useremail">
+                    <input type="email" class="form-control"  name="email">
                 </div>
 
             </div>
             <div class="row">
                 <div class="col">
                     <label>User Role</label>
-                    <select name="role" class="form-control" value="admin">
+                    <select name="role" class="form-control" >
                         <option>--select Role--</option>
                         @foreach($roles as $role)
                             <option value="{{$role->userrole}}">{{$role->userrole}}</option>
@@ -34,34 +35,31 @@
                     </select>
                 </div>
                 <div class="col">
-                    <label>User Nid</label>
-                    <input type="number" class="form-control"  name="unid">
+                    <label>User Id</label>
+                    <input type="text" class="form-control"  name="id_no">
                 </div>
 
             </div>
             <div class="row">
                 <div class="col">
-                    <label>User Phone(1)</label>
-                    <input type="number" class="form-control"  name="phone1">
+                    <label>User Phone</label>
+                    <input type="number" class="form-control"  name="phone">
                 </div>
-                <div class="col">
-                    <label>User Phone(2)</label>
-                    <input type="number" class="form-control"  name="phone2">
-                </div>
-            </div>
-
-            <div class="row">
                 <div class="col">
                     <label>User Address </label>
-                    <textarea class="form-control"  name="useraddress"></textarea>
+                    <textarea class="form-control"  name="address"></textarea>
                 </div>
-
             </div>
+
 
             <div class="row">
                 <div class="col">
+                    <label>Password</label>
+                    <input type="password" class="form-control" name="password">
+                </div>
+                <div class="col">
                     <label>Profile Picture</label>
-                    <input type="file" class="form-control" name="profileimage">
+                    <input type="file" class="form-control" name="profile_image">
                 </div>
 
             </div>
