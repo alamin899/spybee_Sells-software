@@ -29,6 +29,8 @@ Route::group(['middleware'=>'check'],function (){
     //======================================================================
     //this is for when user already login and want to dashbord by url
     Route::get('adminlogin','loginController@dashbord')->name('adminlogin');
+
+
     //======================================================================
                 //            Start usermanagemnt part
     //======================================================================
@@ -74,6 +76,10 @@ Route::group(['middleware'=>'check'],function (){
     //======================================================================
     //            End usermanagemnt part
     //======================================================================
+
+
+
+    //======================================================================
     //            Start Product Management Part
     //======================================================================
     //this is for when user already login and want to dashbord by url
@@ -85,6 +91,10 @@ Route::group(['middleware'=>'check'],function (){
     Route::get('product/list','productmanagementController@viewproductlist')->name('viewproductlist');
     //======================================================================
     //              End Product Management Part
+    //======================================================================
+
+
+
     //======================================================================
     //                Start Vendor Management
     //======================================================================
