@@ -44,13 +44,61 @@
                     <td>{{$customer->customeraddress}}</td>
 
                     <td>
-                        <input type="submit" name="delete" value="view" class="btn btn-success btn-sm ">
-                        <input type="submit" name="delete" value="delete" class="btn btn-danger btn-sm ">
-                        <input type="submit" name="delete" value="edit" class="btn btn-primary btn-sm ">
+                        <a href="{{route('indivicustomerview',['id'=>$customer->id])}}" name="view" class="btn btn-success btn-sm">view</a>
+                        <input type="submit" class="deletecustomer btn btn-danger btn-sm" data-id="{{$customer->id}}" value="delete">
+                        <a href="{{route('indicustupdate',['id'=>$customer->id])}}" name="edit" class="btn btn-primary btn-sm">edit</a>
                     </td>
                 </tr>
                     @endforeach
             </table>
         </div>
     </div>
+    <script>
+        $(".deletecustomer").click(function () {
+
+            var token = $("meta[name='csrf-token']").attr("content");
+            var id = $(this).data("id");
+
+            swal({
+                title: "Are you sure?",
+                text: "Once deleted, you will not be able to recover this imaginary file!",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        $.ajax({
+                            url:"{{url('deletecustomer')}}" + '/' +id,
+                            type:"DELETE",
+                            dataType:"JSON",
+                            // data:{'_method':'DELETE','_token':csrf_token,'id':id},
+                            data:{"id":id,"_token":token},
+                            success:function (data) {
+                                if (data=="success"){
+                                    swal('wow','successfully delete','success');
+                                    list()
+                                }
+                                else
+                                    swal('Opps','Not Deleted','warning')
+                            },
+                            error:function (data) {
+                                swal("OOpps","delete not success","error");
+                            }
+                        })
+                    } else {
+                        swal("Your imaginary file is safe!");
+                    }
+                });
+        })
+
+
+
+
+
+
+
+
+
+    </script>
 @endsection()

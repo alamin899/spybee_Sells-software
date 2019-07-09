@@ -38,6 +38,8 @@ Route::group(['middleware'=>'check'],function (){
     Route::get('update/softuser/{id}','usermanagementController@indvidedit')->name('individualuseredit');
     //update inserted user
     Route::post('update/softwareuser/','usermanagementController@indvidupdate')->name('insertupdate');
+    //delete user
+    Route::delete('deleteuser/{id}','usermanagementController@deleteuser')->name('deleteuser');
 
 
     //software user creat
@@ -50,9 +52,19 @@ Route::group(['middleware'=>'check'],function (){
     Route::get('userrole/{id}', 'usermanagementController@delete')->name('destroy');
     //customer insert
     Route::post('customer/insert','usermanagementController@insertcustomer')->name('insertcustomer');
+    //individual customer view
+    Route::get('indivicustomerview/{id}','usermanagementController@customindividual')->name('indivicustomerview');
+    //update individual customer
+    Route::post('customerupdate','usermanagementController@customerupdate')->name('customerupdate');
+    Route::get('indicustupdate/{id}','usermanagementController@custupdview')->name('indicustupdate');
+    Route::delete('deletecustomer/{id}','usermanagementController@deletecustomer')->name('deletecustomer');
+
+
 
     //software user list
     Route::get('user/list','usermanagementController@userlistview')->name('userlistview');
+    Route::get('useralllist','usermanagementController@useralllist')->name('useralllist');
+
     //software user Role creat
     Route::get('user/role','usermanagementController@userroleview')->name('userroleview');
     //Customer Add form view

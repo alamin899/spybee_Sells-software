@@ -127,7 +127,60 @@ class usermanagementController extends Controller
             return response()->json("error");
 }
 
+public function deleteuser($id){
 
+        $delete=DB::table('users')->where('id',$id)->delete();
+    if ($delete){
+        return response()->json("success");
+    }
+    else
+        return response()->json("error");
+}
+
+public function useralllist(){
+    $users=DB::table('users')->orderBy('id', 'desc')->get();
+    return view('adminPannel.usrmanagement.softwareuserlist',['users'=>$users]);
+}
+
+public function customindividual($id){
+    $customers=DB::table('customers')->where('id',$id)->first();
+    return view('adminPannel.usrmanagement.individualcustomer',['customers'=>$customers]);
+}
+
+public function customerupdate(Request $request){
+    $id=$request->id;
+
+    $update=DB::table('customers')->where('id',$id)->update([
+        'customername'=>$request->customername,
+        'customercompany'=>$request->customercompany,
+        'customeremail'=>$request->customeremail,
+        'customercontact'=>$request->customercontact,
+        'customeraltcontact'=>$request->customeraltcontact,
+        'phone'=>$request->phone,
+        'phone1'=>$request->phone1,
+        'customeraddress'=>$request->customeraddress,
+
+    ]);
+    if ($update){
+        return response()->json("success");
+    }
+    else
+        return response()->json("error");
+
+}
+
+public function custupdview($id){
+    $users=DB::table('customers')->where('id',$id)->first();
+    return view('adminPannel.usrmanagement.updatecustomer',['customers'=>$users]);
+}
+public function deletecustomer($id){
+    $delete=DB::table('customers')->where('id',$id)->delete();
+    if ($delete){
+        return response()->json("success");
+    }
+    else
+        return response()->json("error");
+}
 
 
 }

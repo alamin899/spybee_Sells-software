@@ -210,7 +210,7 @@
                         swal("Great","successfully inserted","success");
                     }
                     else {
-                        swal("OOpps"," not successf","error");
+                        swal("OOpps"," There is No Change","error");
                     }
                 },
                 error:function (error) {
