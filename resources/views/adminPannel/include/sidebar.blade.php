@@ -181,7 +181,18 @@
                 </li>
 
                 <li class="nav-item has-treeview">
-                    <a href="#" class="nav-link">
+                    <a href="{{route('viewsell')}}" class="nav-link">
+                        <i class="nav-icon fa fa-product-hunt"></i>
+                        <p>
+                            Sells Product
+
+                        </p>
+                    </a>
+
+                </li>
+
+                <li class="nav-item has-treeview">
+                    <a href="" class="nav-link">
                         <i class="nav-icon fa fa-address-card-o"></i>
                         <p>
                             Sells Report

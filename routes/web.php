@@ -82,6 +82,8 @@ Route::group(['middleware'=>'check'],function (){
     //======================================================================
     //            Start Product Management Part
     //======================================================================
+    //sells product view
+    Route::get('sells','productmanagementController@viewsell')->name('viewsell');
     //this is for when user already login and want to dashbord by url
 
     Route::get('admin/addproductview','productmanagementController@addproductview')->name('addproductview');

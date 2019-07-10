@@ -15,4 +15,8 @@ class productmanagementController extends Controller
     public function viewproductlist(){
         return view('adminPannel.productmanagement.viewproductlist');
     }
+    //sells product view
+    public function viewsell(){
+        return view('adminPannel.productmanagement.sellproduct');
+            }
 }
