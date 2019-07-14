@@ -84,6 +84,7 @@
                     success:function (data) {
                         if (data=="success"){
                             swal("Great","successfully inserted","success");
+                            document.getElementById("insertcustomer").reset();
                         }
                         else {
                             swal("OOpps","inserted not success","error");

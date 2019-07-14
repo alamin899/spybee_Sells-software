@@ -182,5 +182,30 @@ public function deletecustomer($id){
         return response()->json("error");
 }
 
+//customer search
+
+public function searchcustomer(Request $request){
+        if ($request->search){
+            $searchs=DB::table('customers')->where('customername','like','%'.$request->customername)
+                ->orwhere('customercompany','like','%'.$request->customercompany.'%')
+                ->orwhere('customercontact','like','%'.$request->customercontact.'%')
+                ->get();
+            if ($searchs){
+                foreach ($searchs as $key=>$search){
+                    echo '<tr><td>'.$search->customername.'</td><td>'.
+                        $search->customercompany.'</td><td>'.$search->customeremail.'</td><td>'.$search->customercontact.'</td><td>'.
+                        $search->phone.'</td><td>'.$search->customeraddress.'</td><td>'.
+                        '<a href="{{route(\'indivicustomerview\',[\'id\'=>$customer->id])}}" name="view" class="btn btn-success btn-sm">view</a>'.
+                        '<input type="submit" class="deletecustomer btn btn-danger btn-sm" data-id="{{$customer->id}}" value="delete">'.
+                        '<a href="{{route(\'indicustupdate\',[\'id\'=>$customer->id])}}" name="edit" class="btn btn-primary btn-sm">edit</a>'.
+                        '</td></tr>';
+                }
+            }
+        }
+}
+
+
+
+
 
 }

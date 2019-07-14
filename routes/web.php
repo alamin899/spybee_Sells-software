@@ -34,6 +34,8 @@ Route::group(['middleware'=>'check'],function (){
     //======================================================================
                 //            Start usermanagemnt part
     //======================================================================
+    //user email check
+   // Route::post('useremailcheck','usermanagementController@useremailcheck')->name('useremailcheck');
     //individual softwareuser view
     Route::get('admin/softuser/{id}','usermanagementController@indvidview')->name('individualuserview');
     //individual software user update
@@ -42,6 +44,8 @@ Route::group(['middleware'=>'check'],function (){
     Route::post('update/softwareuser/','usermanagementController@indvidupdate')->name('insertupdate');
     //delete user
     Route::delete('deleteuser/{id}','usermanagementController@deleteuser')->name('deleteuser');
+    //search userlist
+    Route::post('searchcustomer','usermanagementController@searchcustomer')->name('searchcustomer');
 
 
     //software user creat
@@ -82,6 +86,7 @@ Route::group(['middleware'=>'check'],function (){
     //======================================================================
     //            Start Product Management Part
     //======================================================================
+    Route::post('email_available','vendormanagementController@email_available')->name('email_available');
     //sells product view
     Route::get('sells','productmanagementController@viewsell')->name('viewsell');
     //this is for when user already login and want to dashbord by url
@@ -100,9 +105,11 @@ Route::group(['middleware'=>'check'],function (){
     //======================================================================
     //                Start Vendor Management
     //======================================================================
-    Route::get('vendor/addview','vendormanagementController@vendoraddview')->name('vendoraddview');
+    Route::get('vendor/addview','vendormanagementContvendorlistroller@vendoraddview')->name('vendoraddview');
     Route::get('vendor/List','vendormanagementController@vendorlist')->name('vendorlist');
     Route::get('vendor/Area','vendormanagementController@addvendorarea')->name('addvendorarea');
+    //vendor insert
+    Route::post('vendor/add','vendormanagementController@vendorinsert')->name('vendorinsert');
     //    insert vendor area
 
     Route::post('vendor/AddArea','vendormanagementController@vendorareainsert')->name('vendorareainsert');

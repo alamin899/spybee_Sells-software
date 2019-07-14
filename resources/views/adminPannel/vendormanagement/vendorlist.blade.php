@@ -32,20 +32,22 @@
                     <th>Short Address</th>
                     <th>Action</th>
                 </tr>
+                @foreach($vendors as $vendor)
                 <tr>
                     <td><input type="checkbox" name="checkbox" id="checkbox"></td>
-                    <td>VERBAL</td>
-                    <td>info@verbalbd.com</td>
-                    <td>029577035</td>
-                    <td>01777231234</td>
+                    <td>{{$vendor->vname}}</td>
+                    <td>{{$vendor->vemail}}</td>
+                    <td>{{$vendor->vphone}}</td>
+                    <td>{{$vendor->cpmob1}}</td>
 
-                    <td>120/A,R.S Bhaban,(2nd floor)suite-310,motijheel</td>
+                    <td>{{$vendor->vsaddress}}</td>
                     <td>
                         <input type="submit" name="delete" value="view" class="btn btn-success btn-sm ">
                         <input type="submit" name="delete" value="edit" class="btn btn-primary btn-sm ">
                         <input type="submit" name="delete" value="delete" class="btn btn-danger btn-sm ">
                     </td>
                 </tr>
+                    @endforeach
             </table>
         </div>
     </div>

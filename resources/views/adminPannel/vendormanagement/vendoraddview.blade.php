@@ -10,7 +10,8 @@
         </div>
         <!-- /.card-header -->
         <!-- form start -->
-        <form role="form" class="form-control">
+        <form action="{{route('vendorinsert')}}" method="post" role="form" class="form-control" id="venodradd">
+            {{csrf_field()}}
             <div class="row">
                 <div class="col">
                     <label>Vendor Name</label>
@@ -48,7 +49,7 @@
                 </div>
                 <div class="col">
                     <label>Area</label>
-                    <select class="form-control" name="varea">
+                    <select class="form-control" value="dhaka" name="varea">
                         <option value="0">--Select Vendor Area--</option>
                     </select>
                 </div>
@@ -81,5 +82,39 @@
             </div>
         </form>
     </div>
+
+    <script>
+        $(function () {
+            $("#venodradd").on("submit",function (e) {
+                e.preventDefault();
+                var form=$(this);
+                var url=form.attr("action");
+                var method=form.attr("method");
+                var data=form.serialize();
+                console.log( url );
+
+                $.ajax({
+                    url:url,
+                    data:data,
+                    type:"POST",
+                    dataType:"JSON",
+                    success:function (data) {
+                        if (data=="success"){
+                            swal("Great","successfully inserted","success");
+                            document.getElementById("venodradd").reset();
+                        }
+                        else {
+                            swal("OOpps","inserted not success","error");
+                        }
+                    },
+                    error:function (error) {
+                        swal("OOpps","inserted not success","error");
+                    }
+
+
+                })
+            })
+        })
+    </script>
 @endsection()
 

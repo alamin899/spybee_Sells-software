@@ -5,6 +5,7 @@
 @endsection()
 
 @section('body')
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
     <div class="card card-primary container">
         <div class="card-header" style="text-align: center;background: #adb7af;color: black;">
             <h2 class="card-title">Sells product </h2>
@@ -15,7 +16,7 @@
             <div class="row">
                 <div class="col-md-2 form-control">
                     <label>Customer</label>
-                    <select class="form-control">
+                    <select class="form-control" id="selldropdown">
                         <option>--select--</option>
                         <option>abul</option>
                     </select>
@@ -163,5 +164,16 @@
             </div>
         </form>
     </div>
+
+    {{--dropdown searchable--}}
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+
+    <script type="text/javascript">
+        $("#selldropdown").select2({
+
+        })
+
+    </script>
 @endsection()
 
