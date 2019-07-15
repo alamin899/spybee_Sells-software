@@ -13,6 +13,7 @@ class usermanagementController extends Controller
         return view('adminPannel.usrmanagement.softwareuser',['roles'=>$roles]);
     }
     public function userlistview(){
+
         $users=DB::table('users')->orderBy('id', 'desc')->get();
         return view('adminPannel.usrmanagement.softwareuserlist',['users'=>$users]);
     }
@@ -203,6 +204,26 @@ public function searchcustomer(Request $request){
             }
         }
 }
+
+    public function searchuser(Request $request){
+        if ($request->search){
+            $searchs=DB::table('users')->where('name','like','%'.$request->name)
+                ->orwhere('email','like','%'.$request->email.'%')
+                ->orwhere('phone','like','%'.$request->phone.'%')
+                ->get();
+            if ($searchs){
+                foreach ($searchs as $key=>$search){
+                    echo '<tr><td>'.$search->name.'</td><td>'.
+                        $search->email.'</td><td>'.$search->role.'</td><td>'.$search->phone.'</td><td>'.
+                        $search->id_no.'</td><td>'.$search->address.'</td><td>'.
+                        '<a href="{{route(\'indivicustomerview\',[\'id\'=>$customer->id])}}" name="view" class="btn btn-success btn-sm">view</a>'.
+                        '<input type="submit" class="deletecustomer btn btn-danger btn-sm" data-id="{{$customer->id}}" value="delete">'.
+                        '<a href="{{route(\'indicustupdate\',[\'id\'=>$customer->id])}}" name="edit" class="btn btn-primary btn-sm">edit</a>'.
+                        '</td></tr>';
+                }
+            }
+        }
+    }
 
 
 

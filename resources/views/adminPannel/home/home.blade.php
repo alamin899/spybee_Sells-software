@@ -54,9 +54,10 @@
             <!-- small box -->
             <div class="small-box bg-danger">
                 <div class="inner">
-                    <h3>65</h3>
 
-                    <p>Visitors</p>
+                    <h3>56</h3>
+
+                    <p>Total User</p>
                 </div>
                 <div class="icon">
                     <i class="ion ion-pie-graph"></i>

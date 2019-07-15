@@ -44,9 +44,10 @@ Route::group(['middleware'=>'check'],function (){
     Route::post('update/softwareuser/','usermanagementController@indvidupdate')->name('insertupdate');
     //delete user
     Route::delete('deleteuser/{id}','usermanagementController@deleteuser')->name('deleteuser');
-    //search userlist
+    //search customerlist
     Route::post('searchcustomer','usermanagementController@searchcustomer')->name('searchcustomer');
-
+    //search software usere
+    Route::post('searchuser','usermanagementController@searchuser')->name('searchuser');
 
     //software user creat
     Route::get('user/view','usermanagementController@useraddview')->name('useraddview');

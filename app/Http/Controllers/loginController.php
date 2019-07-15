@@ -15,9 +15,11 @@ class loginController extends Controller
            'email'=>$request->email,
            'password'=>$request->password
        ])){
+
            $email=$request->email;
            $user=DB::table('users')->where('email','=',$email)->first();
            $request->session()->put('name',$user->name);
+
 
            return view('adminPannel.home.home');
 

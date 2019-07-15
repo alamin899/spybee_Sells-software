@@ -18,7 +18,9 @@
                     <label>Customer</label>
                     <select class="form-control" id="selldropdown">
                         <option>--select--</option>
-                        <option>abul</option>
+                        @foreach($customers as $customer)
+                        <option value="{{$customer->phone}}">{{$customer->customername}} {{$customer->phone}}</option>
+                            @endforeach
                     </select>
 
                 </div>

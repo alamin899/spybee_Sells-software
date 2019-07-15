@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class productmanagementController extends Controller
 {
@@ -17,6 +18,7 @@ class productmanagementController extends Controller
     }
     //sells product view
     public function viewsell(){
-        return view('adminPannel.productmanagement.sellproduct');
+        $customers=DB::table('customers')->get();
+        return view('adminPannel.productmanagement.sellproduct',['customers'=>$customers]);
             }
 }
