@@ -21,4 +21,12 @@ class productmanagementController extends Controller
         $customers=DB::table('customers')->get();
         return view('adminPannel.productmanagement.sellproduct',['customers'=>$customers]);
             }
+
+
+            public function customerinfo($id){
+                 $customer=DB::table('customers')->where('phone',$id)->first();
+
+                 echo '<label>Name:</label>'.$customer->customername.'<hr><label>Email:</label>'.$customer->customeremail.'<hr><label>Phone:</label>'.$customer->phone.'<hr><label>Address:</label>'.
+                     $customer->customeraddress;
+            }
 }

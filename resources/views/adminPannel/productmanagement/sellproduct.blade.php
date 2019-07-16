@@ -16,10 +16,10 @@
             <div class="row">
                 <div class="col-md-2 form-control">
                     <label>Customer</label>
-                    <select class="form-control" id="selldropdown">
-                        <option>--select--</option>
+                    <select class="form-control customer"  name="customer" id="selldropdown">
+                        <option value="0">--select--</option>
                         @foreach($customers as $customer)
-                        <option value="{{$customer->phone}}">{{$customer->customername}} {{$customer->phone}}</option>
+                        <option  value="{{$customer->phone}}">{{$customer->customername}} {{$customer->phone}}</option>
                             @endforeach
                     </select>
 
@@ -47,8 +47,10 @@
                         <div class="card-header" style="background: #191b19;">
                             <h2 class="card-title">Customer Address</h2>
                         </div>
-                        <div>
-                            <textarea class="form-control" rows="4" ></textarea>
+                        <div id="customeraddress">
+                            <textarea class="form-control"  >
+
+                            </textarea>
                         </div>
 
                     </div>
@@ -166,16 +168,43 @@
             </div>
         </form>
     </div>
+{{--    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>--}}
+{{--    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>--}}
 
-    {{--dropdown searchable--}}
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+{{--    after select user show text area of custer information--}}
+    <script>
+        $(document).ready(function () {
+            $('#selldropdown').change(function () {
+                var token = $("meta[name='csrf-token']").attr("content");
+                var customer=$(this).val();
+                $.ajax({
+                    url:"{{url('customerinfo')}}" + '/' +customer,
+                    type:"get",
+                    dataType:"html",
 
-    <script type="text/javascript">
-        $("#selldropdown").select2({
-
-        })
+                    data:{"id":customer,"_token":token},
+                    success:function (data) {
+                         $("#customeraddress").html(data);
+                    },
+                    error:function (data) {
+                        swal("OOpps","delete not success","error");
+                    }
+                })
+            });
+        });
 
     </script>
+
+    {{--dropdown searchable--}}
+
+{{--    <script type="text/javascript">--}}
+{{--        $("#selldropdown").select2({--}}
+
+{{--        })--}}
+
+
+{{--    </script>--}}
+
+
 @endsection()
 

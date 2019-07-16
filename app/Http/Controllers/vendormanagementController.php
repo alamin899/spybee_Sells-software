@@ -74,5 +74,21 @@ public function email_available(Request $request){
     }
 }
 
+    public function phone_available(Request $request){
+        if($request->get('phone'))
+        {
+            $phone = $request->get('phone');
+            $data = DB::table("users")->where('phone', $phone)->count();
+            if($data > 0)
+            {
+                echo 'not_unique';
+            }
+            else
+            {
+                echo 'unique';
+            }
+        }
+    }
+
 
 }

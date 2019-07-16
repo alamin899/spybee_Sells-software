@@ -17,13 +17,13 @@
         </div>
         <!-- /.card-header -->
         <!-- form start -->
-        <form role="form" class="form-control" id="softuserform" action="{{route('insertsoftwareuser')}}" method="post">
+        <form role="form" class="form-control" id="softuserform" action="{{route('insertsoftwareuser')}}" method="post" enctype="multipart/form-data">
             {{csrf_field()}}
             <input type="hidden" name="_token" id="_token" value="<?php echo csrf_token(); ?>">
             <div class="row">
                 <div class="col">
                     <label>User Name</label>
-                    <input type="text" class="form-control"  name="name" >
+                    <input type="text" class="form-control"  name="name">
                 </div>
                 <div class="col">
                     <label>User Email</label>
@@ -53,7 +53,8 @@
             <div class="row">
                 <div class="col">
                     <label>User Phone</label>
-                    <input type="number" class="form-control"  name="phone">
+                    <input type="number" class="form-control"  name="phone" id="phone">
+                    <span id="error_phone"></span>
                 </div>
                 <div class="col">
                     <label>User Address </label>
@@ -164,12 +165,64 @@
 
     });
 
-    // $.ajaxSetup({
-    //     headers: {
-    //         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-    //     }
-    // });
 </script>
+
+    {{--ajax Phone number availability check--}}
+
+    <script>
+
+        $(document).ready(function(){
+
+            $('#phone').blur(function(){
+                var phone_email = '';
+                var phone = $(this).val();
+                console.log(phone);
+                var _token = $('#_token').val();
+                var filter = /(^([+]{1}[8]{2}|0088)?(01){1}[5-9]{1}\d{8})$/;
+                if(!filter.test(phone))
+                {
+                    $('#error_phone').html('<label class="text-danger">Invalid Mobile</label>');
+                    $('#phone').addClass('has-error');
+                    $('#register').attr('disabled', 'disabled');
+                }
+                else
+                {
+                    $.ajax({
+                        url:"{{ url('phone_available') }}",
+                        method:"post",
+                        data:{phone:phone,_token:_token},
+                        success:function(result)
+                        {
+                            if(result == 'unique')
+                            {
+                                $('#error_phone').html('<label class="text-success">Mobile Number is Available</label>');
+                                $('#phone').removeClass('has-error');
+                                $('#register').attr('disabled', false);
+                            }
+                            else
+                            {
+                                $('#error_phone').html('<label class="text-danger">Mobile Number is not Available</label>');
+                                $('#phone').addClass('has-error');
+                                $('#register').attr('disabled', 'disabled');
+                            }
+                        },
+                        error:function () {
+
+                        }
+                    })
+                }
+            });
+
+        });
+
+        // $.ajaxSetup({
+        //     headers: {
+        //         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        //     }
+        // });
+    </script>
+
+
 {{--end ajax of email availability check--}}
     {{--dropdown searchable--}}
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>

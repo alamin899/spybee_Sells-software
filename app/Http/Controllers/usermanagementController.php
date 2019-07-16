@@ -29,7 +29,18 @@ class usermanagementController extends Controller
         return view('adminPannel.usrmanagement.viewcustomer',['customers'=>$customers]);
     }
 
+    protected function image($image){
+
+        //return $imgurl;
+    }
+
     public function insertsofuser(Request $request){
+//        $pofimage=$request->file('profile_image');
+//        $imagename=$pofimage->getClientOriginalName();
+//        $directory='images/profileimage/';
+//        $imgurl=$directory.$imagename;
+//        $pofimage->move($directory,$imagename);
+
        $insert=DB::table('users')->insert(
            [
                'name'=>$request->name,

@@ -87,7 +87,11 @@ Route::group(['middleware'=>'check'],function (){
     //======================================================================
     //            Start Product Management Part
     //======================================================================
+    //    after select user show text area of custer information
+    Route::get('customerinfo/{id}','productmanagementController@customerinfo')->name('customerinfo');
     Route::post('email_available','vendormanagementController@email_available')->name('email_available');
+    //Phone number availability check
+    Route::post('phone_available','vendormanagementController@phone_available')->name('phone_available');
     //sells product view
     Route::get('sells','productmanagementController@viewsell')->name('viewsell');
     //this is for when user already login and want to dashbord by url
