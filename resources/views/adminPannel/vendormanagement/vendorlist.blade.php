@@ -42,9 +42,9 @@
 
                     <td>{{$vendor->vsaddress}}</td>
                     <td>
-                        <input type="submit" name="delete" value="view" class="btn btn-success btn-sm ">
+                        <a href="{{route('individualvendor',['id'=>$vendor->id])}}" name="view" class="btn btn-success btn-sm" >view</a>
                         <input type="submit" name="delete" value="edit" class="btn btn-primary btn-sm ">
-                        <input type="submit" name="delete" value="delete" class="btn btn-danger btn-sm ">
+                        <a href="{{route('indvendorupdate',['id'=>$vendor->id])}}" name="edit" class="btn btn-primary btn-sm">edit</a>
                     </td>
                 </tr>
                     @endforeach

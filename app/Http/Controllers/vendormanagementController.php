@@ -90,5 +90,16 @@ public function email_available(Request $request){
         }
     }
 
+    //individual vendor view
+    public function indivivendorview($id){
+        $vendors=DB::table('vendors')->where('id',$id)->first();
+        return view('adminPannel.vendormanagement.individualviewupdate',['data'=>"view"],['vendor'=>$vendors]);
+
+    }
+    public function updatevendorview($id){
+        $vendors=DB::table('vendors')->where('id',$id)->first();
+        return view('adminPannel.vendormanagement.individualviewupdate',['data'=>"update"],['vendor'=>$vendors]);
+    }
+
 
 }

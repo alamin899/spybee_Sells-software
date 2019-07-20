@@ -14,9 +14,8 @@
 Route::get('/', function () {
     return view('login.home.home');
 });
-Route::get('test',function (){
-   return view('adminPannel.vendormanagement.useradd') ;
-});
+
+
 
 //for dashbord view by login
 //this is when user inter by login
@@ -110,13 +109,17 @@ Route::group(['middleware'=>'check'],function (){
     //======================================================================
     //                Start Vendor Management
     //======================================================================
-    Route::get('vendor/addview','vendormanagementContvendorlistroller@vendoraddview')->name('vendoraddview');
+    Route::get('vendor/addview','vendormanagementController@vendoraddview')->name('vendoraddview');
     Route::get('vendor/List','vendormanagementController@vendorlist')->name('vendorlist');
     Route::get('vendor/Area','vendormanagementController@addvendorarea')->name('addvendorarea');
     //vendor insert
     Route::post('vendor/add','vendormanagementController@vendorinsert')->name('vendorinsert');
-    //    insert vendor area
+    //individual vendor view
+    Route::get('vendor/indview/{id}','vendormanagementController@indivivendorview')->name('individualvendor');
+    //individual vendor update view
+    Route::get('indvendorupdate/{id}','vendormanagementController@updatevendorview')->name('indvendorupdate');
 
+    //    insert vendor area
     Route::post('vendor/AddArea','vendormanagementController@vendorareainsert')->name('vendorareainsert');
     //======================================================================
     //                End Vendor Management

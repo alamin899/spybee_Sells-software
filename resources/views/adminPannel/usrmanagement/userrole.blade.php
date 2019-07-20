@@ -79,7 +79,7 @@
                         <td>{{$role->userrole}}</td>
                         <td>
                             <a href="" name="delete" class="btn btn-danger btn-sm">delete</a>
-                            <a href="" name="edit"  class="btn btn-primary btn-sm">edit</a>
+                            <a href="" name="edit"   class="editview btn btn-primary btn-sm">edit</a>
                         </td>
                     </tr>
                         @endforeach
@@ -92,36 +92,7 @@
 
     </div>
     <script>
-        $(".delete").click(function(){
-            var id = $(this).data("id");
-            var token = $("meta[name='csrf-token']").attr("content");
-            console.log(id);
-            $.ajax(
-                {
-                    url: "userrole/"+id,
-                    type: 'GET',
-                    data: {
-                        "id": id,
-                        "_token": token,
 
-                    },
-                    success: function (data){
-                        if (data=="success"){
-                            swal("Great","successfully inserted","success");
-                        }
-                        else {
-                            swal("OOpps","inserted not success","error");
-                        }
-                    },
-                    error:function (error) {
-                        swal("OOpps","inserted not success","error");
-                    },
-
-                });
-
-
-
-        });
     </script>
 
 @endsection()

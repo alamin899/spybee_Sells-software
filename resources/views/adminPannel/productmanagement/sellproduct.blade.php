@@ -29,7 +29,7 @@
                     <div class="row">
                         <div class="col form-control">
                             <label>Date</label>
-                            <input type="date" name="selldate" >
+                            <input type="date" name="selldate">
                         </div>
                         <div class="col form-control">
                             <label>Sells No</label>

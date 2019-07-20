@@ -50,7 +50,7 @@
                 <div class="col">
                     <label>Area</label>
                     <select class="form-control" value="dhaka" name="varea">
-                        <option value="0">--Select Vendor Area--</option>
+                        <option value="dhaka">--Select Vendor Area--</option>
                     </select>
                 </div>
 
@@ -108,7 +108,7 @@
                         }
                     },
                     error:function (error) {
-                        swal("OOpps","inserted not success","error");
+                        swal("OOpps","inserted not success error","error");
                     }
 
 
