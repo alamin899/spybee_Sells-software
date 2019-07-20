@@ -43,7 +43,7 @@
                     <td>{{$vendor->vsaddress}}</td>
                     <td>
                         <a href="{{route('individualvendor',['id'=>$vendor->id])}}" name="view" class="btn btn-success btn-sm" >view</a>
-                        <input type="submit" name="delete" value="edit" class="btn btn-primary btn-sm ">
+                        <input type="submit" class="deleteuser btn btn-danger btn-sm" data-id="{{$vendor->id}}" value="delete">
                         <a href="{{route('indvendorupdate',['id'=>$vendor->id])}}" name="edit" class="btn btn-primary btn-sm">edit</a>
                     </td>
                 </tr>
@@ -51,6 +51,48 @@
             </table>
         </div>
     </div>
+
+
+    <script>
+        $(".deleteuser").click(function () {
+
+            var token = $("meta[name='csrf-token']").attr("content");
+            var id = $(this).data("id");
+
+            swal({
+                title: "Are you sure?",
+                text: "Once deleted, you will not be able to recover this imaginary file!",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        $.ajax({
+                            url:"{{url('deletevendor')}}" + '/' +id,
+                            type:"DELETE",
+                            dataType:"JSON",
+                            data:{"id":id,"_token":token},
+                            success:function (data) {
+                                if (data == "success"){
+                                    swal('wow','successfully delete','success');
+
+                                }
+                                else
+                                    swal('Opps','Not Deleted','warning')
+                            },
+                            error:function (data) {
+                                swal("OOpps","delete not success","error");
+                            }
+                        })
+                    } else {
+                        swal("Your imaginary file is safe!");
+                    }
+                });
+        })
+
+
+    </script>
 @endsection()
 
 

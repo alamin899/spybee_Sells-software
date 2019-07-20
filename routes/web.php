@@ -118,6 +118,12 @@ Route::group(['middleware'=>'check'],function (){
     Route::get('vendor/indview/{id}','vendormanagementController@indivivendorview')->name('individualvendor');
     //individual vendor update view
     Route::get('indvendorupdate/{id}','vendormanagementController@updatevendorview')->name('indvendorupdate');
+    //vendor delete
+    Route::delete('deletevendor/{id}','vendormanagementController@deltevendor')->name('deletevendor');
+    //delete vendor area
+    Route::delete('deletevendorarea/{id}','vendormanagementController@deletearea')->name('deletevendorarea');
+    //updated vendor
+    Route::post('vendorupdate','vendormanagementController@vendorupdate')->name('vendorupdate');
 
     //    insert vendor area
     Route::post('vendor/AddArea','vendormanagementController@vendorareainsert')->name('vendorareainsert');

@@ -70,33 +70,18 @@
                 <table class="table table-bordered table-striped table-responsive-lg">
                     <tr>
                         <th>Vendor Area</th>
-
                         <th>Action</th>
                     </tr>
+                    @foreach($vendorarea as $vendor)
                     <tr>
-                        <td>Motijheel</td>
+                        <td>{{$vendor->vendorarea}}</td>
                         <td>
-                            <input type="submit" name="view" value="view" class="btn btn-success btn-sm ">
-                            <input type="submit" name="delete" value="delete" class="btn btn-danger btn-sm ">
-                            <input type="submit" name="edit" value="edit" class="btn btn-primary btn-sm ">
+                            <input type="submit" class="deleteuser btn btn-danger btn-sm" data-id="{{$vendor->id}}" value="delete">
+
                         </td>
                     </tr>
-                    <tr>
-                        <td>Banani</td>
-                        <td>
-                            <input type="submit" name="view" value="view" class="btn btn-success btn-sm ">
-                            <input type="submit" name="delete" value="delete" class="btn btn-danger btn-sm ">
-                            <input type="submit" name="edit" value="edit" class="btn btn-primary btn-sm ">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Gulsan</td>
-                        <td>
-                            <input type="submit" name="view" value="view" class="btn btn-success btn-sm ">
-                            <input type="submit" name="delete" value="delete" class="btn btn-danger btn-sm ">
-                            <input type="submit" name="edit" value="edit" class="btn btn-primary btn-sm ">
-                        </td>
-                    </tr>
+                        @endforeach
+
                 </table>
             </div>
             <div class="col-md-3"></div>
@@ -104,5 +89,47 @@
 
 
     </div>
+    {{--//delete vendor--}}
+
+    <script>
+        $(".deleteuser").click(function () {
+
+            var token = $("meta[name='csrf-token']").attr("content");
+            var id = $(this).data("id");
+
+            swal({
+                title: "Are you sure?",
+                text: "Once deleted, you will not be able to recover this imaginary file!",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        $.ajax({
+                            url:"{{url('deletevendorarea')}}" + '/' +id,
+                            type:"DELETE",
+                            dataType:"JSON",
+                            data:{"id":id,"_token":token},
+                            success:function (data) {
+                                if (data == "success"){
+                                    swal('wow','successfully delete','success');
+
+                                }
+                                else
+                                    swal('Opps','Not Deleted','warning')
+                            },
+                            error:function (data) {
+                                swal("OOpps","delete not success","error");
+                            }
+                        })
+                    } else {
+                        swal("Your imaginary file is safe!");
+                    }
+                });
+        })
+
+
+    </script>
 @endsection()
 

@@ -280,9 +280,9 @@
 
                         <div class="tab-pane" id="settings">
                             <div class="container-fluid">
-                                <form action="" method="post" id="customerupdate">
+                                <form action="{{route('vendorupdate')}}" method="post" id="vendorupdate">
                                     {{csrf_field()}}
-                                    <input type="hidden" value="" name="id">
+                                    <input type="hidden" value="{{$vendor->id}}" name="id">
                                     <div class="row">
                                         <div class="col row">
                                             <div class="col"><b>Name</b></div>
@@ -339,14 +339,14 @@
                                         <div class="col row">
                                             <div class="col"><b>Contact person mob</b></div>
                                             <div class="col">
-                                                <input type="number" name="vphone" value="{{$vendor->cpmob1}}">
+                                                <input type="number" name="cpmob1" value="{{$vendor->cpmob1}}">
                                             </div>
 
                                         </div>
                                         <div class="col row">
                                             <div class="col"><b>Contact person alt.mob</b></div>
                                             <div class="col">
-                                                <input type="number" name="companyname" value="{{$vendor->cpmob2}}">
+                                                <input type="number" name="cpmob2" value="{{$vendor->cpmob2}}">
                                             </div>
                                         </div>
                                     </div>
@@ -375,7 +375,7 @@
                                             <div class="col-md-6"><b>Vendor area</b></div>
                                             <div class="col-md-6">
                                                 <select name="varea">
-                                                    <option>{{$vendor->varea}}</option>
+                                                    <option value="{{$vendor->varea}}">{{$vendor->varea}}</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -422,6 +422,40 @@
         <!-- /.col -->
     </div>
     <!-- /.row -->
+
+
+    <script>
+        $(function () {
+            $("#vendorupdate").on("submit",function (e) {
+                e.preventDefault();
+                var form=$(this);
+                var url=form.attr("action");
+                var method=form.attr("method");
+                var data=form.serialize();
+
+
+                $.ajax({
+                    url:url,
+                    data:data,
+                    type:method,
+                    dataType:"JSON",
+                    success:function(data) {
+                        if (data=="success"){
+                            swal("Great","successfully updated","success");
+                        }
+                        else {
+                            swal("OOpps"," There is No Change","error");
+                        }
+                    },
+                    error:function (error) {
+                        swal("OOpps","updated not success!!something error","error");
+                    }
+
+
+                })
+            })
+        })
+    </script>
 
     @endif
 
