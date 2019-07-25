@@ -33,7 +33,8 @@ Route::group(['middleware'=>'check'],function (){
     //======================================================================
                 //            Start usermanagemnt part
     //======================================================================
-    //user email check
+    //userid check
+    Route::post('userid_available','usermanagementController@userid_available')->name('userid_available');
    // Route::post('useremailcheck','usermanagementController@useremailcheck')->name('useremailcheck');
     //individual softwareuser view
     Route::get('admin/softuser/{id}','usermanagementController@indvidview')->name('individualuserview');
@@ -137,3 +138,6 @@ Route::group(['middleware'=>'check'],function (){
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('test','loginController@indexs');
+Route::post('testing','loginController@submit')->name('submitmultiple');

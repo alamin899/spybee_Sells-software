@@ -236,6 +236,23 @@ public function searchcustomer(Request $request){
         }
     }
 
+//    User id available
+
+    public function userid_available(Request $request){
+        if($request->get('id_no'))
+        {
+            $userid = $request->get('id_no');
+            $data = DB::table("users")->where('id_no', $userid)->count();
+            if($data > 0)
+            {
+                echo 'not_unique';
+            }
+            else
+            {
+                echo 'unique';
+            }
+        }
+    }
 
 
 

@@ -46,7 +46,8 @@
                 </div>
                 <div class="col">
                     <label>User Id</label>
-                    <input type="text" class="form-control"  name="id_no">
+                    <input type="text" class="form-control" id="userid"  name="id_no">
+                    <span id="error_userid"></span>
                 </div>
 
             </div>
@@ -183,7 +184,7 @@
                 {
                     $('#error_phone').html('<label class="text-danger">Invalid Mobile</label>');
                     $('#phone').addClass('has-error');
-                    $('#register').attr('disabled', 'disabled');
+                    // $('#register').attr('disabled', 'disabled');
                 }
                 else
                 {
@@ -197,13 +198,13 @@
                             {
                                 $('#error_phone').html('<label class="text-success">Mobile Number is Available</label>');
                                 $('#phone').removeClass('has-error');
-                                $('#register').attr('disabled', false);
+                                // $('#register').attr('disabled', false);
                             }
                             else
                             {
                                 $('#error_phone').html('<label class="text-danger">Mobile Number is not Available</label>');
                                 $('#phone').addClass('has-error');
-                                $('#register').attr('disabled', 'disabled');
+                                // $('#register').attr('disabled', 'disabled');
                             }
                         },
                         error:function () {
@@ -211,6 +212,61 @@
                         }
                     })
                 }
+            });
+
+        });
+
+        // $.ajaxSetup({
+        //     headers: {
+        //         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        //     }
+        // });
+    </script>
+
+    {{--ajax User Id availability check--}}
+
+    <script>
+
+        $(document).ready(function(){
+
+            $('#userid').blur(function(){
+                var phone_email = '';
+                var userid = $(this).val();
+                console.log(phone);
+                var _token = $('#_token').val();
+               // var filter = /(^([+]{1}[8]{2}|0088)?(01){1}[5-9]{1}\d{8})$/;
+               //  if(!filter.test(phone))
+               //  {
+               //      $('#error_phone').html('<label class="text-danger">Invalid Mobile</label>');
+               //      $('#phone').addClass('has-error');
+               //      $('#register').attr('disabled', 'disabled');
+               //  }
+               //  else
+               //  {
+                    $.ajax({
+                        url:"{{ url('userid_available') }}",
+                        method:"post",
+                        data:{id_no:userid,_token:_token},
+                        success:function(result)
+                        {
+                            if(result == 'unique')
+                            {
+                                $('#error_userid').html('<label class="text-success">User Id is Available</label>');
+                                $('#userid').removeClass('has-error');
+
+                            }
+                            else
+                            {
+                                $('#error_userid').html('<label class="text-danger">User Id is Not Available</label>');
+                                $('#userid').addClass('has-error');
+                                // $('#register').attr('disabled', 'disabled');
+                            }
+                        },
+                        error:function () {
+
+                        }
+                    })
+                // }
             });
 
         });

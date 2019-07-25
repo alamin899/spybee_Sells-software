@@ -1,4 +1,3 @@
-
 @extends('adminPannel.master')
 @section('title')
     Sells product
@@ -168,8 +167,8 @@
             </div>
         </form>
     </div>
-{{--    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>--}}
-{{--    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>--}}
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
 
 {{--    after select user show text area of custer information--}}
     <script>
@@ -181,7 +180,6 @@
                     url:"{{url('customerinfo')}}" + '/' +customer,
                     type:"get",
                     dataType:"html",
-
                     data:{"id":customer,"_token":token},
                     success:function (data) {
                          $("#customeraddress").html(data);

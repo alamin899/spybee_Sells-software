@@ -30,4 +30,18 @@ class loginController extends Controller
 public function dashbord(){
        return view('adminPannel.home.home');
 }
+// Testing multiple data insert
+public function indexs(){
+       return view('test');
+}
+
+public function submit(Request $request)
+{
+    $rows=$request->row;
+$data=DB::table('tests')->insert($rows);
+if ($data){
+    echo "success";
+}
+}
+
 }
