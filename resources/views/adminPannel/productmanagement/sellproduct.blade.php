@@ -27,8 +27,8 @@
                 <div class="col-md-5">
                     <div class="row">
                         <div class="col form-control">
-                            <label>Date</label>
-                            <input type="date" name="selldate">
+                            <label >Date</label>
+                            <input type="date" value="<?php echo date("Y-m-d"); ?>" name="selldate">
                         </div>
                         <div class="col form-control">
                             <label>Sells No</label>
