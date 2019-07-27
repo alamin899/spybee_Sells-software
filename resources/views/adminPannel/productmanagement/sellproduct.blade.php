@@ -47,7 +47,7 @@
                             <h2 class="card-title">Customer Address</h2>
                         </div>
                         <div id="customeraddress">
-                            <textarea class="form-control"  >
+                            <textarea class="form-control" >
 
                             </textarea>
                         </div>
@@ -77,7 +77,7 @@
                             <td width="10%">1</td>
                             <td width="10%"><textarea name="row[0][item]"></textarea></td>
                             <td width="15%"><textarea name="row[0][description]"></textarea></td>
-                            <td width="20%"><input type="text" name="row[0][serial]" data-role="tagsinput"></td>
+                            <td width="20%"><input type="text" name="row[0][serial]"></td>
                             <td width="10%"><input type="number" name="row[0][quantity]"></td>
                             <td width="10%"><input type="number" name="row[0][unitprice]"></td>
                             <td width="10%"><input type="number" name="row[0][warrenty]"></td>
@@ -149,6 +149,7 @@
                 html_code +="<td>"+count+"</td>";
                 html_code += "<td><textarea name='row["+count+"][item]'></textarea></td>";
                 html_code += "<td><textarea name='row["+count+"][description]'></textarea></td>";
+            // <input type='text' name='row["+count+"][serial]' data-role='tagsinput'>
                 html_code += "<td><input type='text' name='row["+count+"][serial]' data-role='tagsinput'></td>";
                 html_code += "<td><input type='number' name='row["+count+"][quantity]'></td>";
                 html_code += "<td><input type='number' name='row["+count+"][unitprice]'></td>";
