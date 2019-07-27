@@ -27,7 +27,7 @@
                 <div class="col-md-5">
                     <div class="row">
                         <div class="col form-control">
-                            <label >Date</label>
+                            <label >Date</label><br>
                             <input type="date" value="<?php echo date("Y-m-d"); ?>" name="selldate">
                         </div>
                         <div class="col form-control">
@@ -60,87 +60,34 @@
             </div>
             <hr>
             <div class="row">
-                <div class="col">
-                    <table class="table table-bordered table-responsive table-striped ">
+                <div class="col-md-12">
+                    <table class="table table-bordered table-responsive table-striped " id="crud_table">
                         <tr>
-                            <th>Product Id</th>
-                            <th>Product Model</th>
-                            <th>Product Brand</th>
-                            <th>Product Details</th>
-                            <th>Amount</th>
+                            <th width="10%">Sl</th>
+                            <th width="10%">Item</th>
+                            <th width="15%">Descriptio</th>
+                            <th width="20%">Serial No</th>
+                            <th width="10%">Quantity</th>
+                            <th width="10%">Unit Price</th>
+                            <th width="10%">Warrenty</th>
+                            <th width="10%">Amount</th>
+                            <th width="5%"></th>
                         </tr>
                         <tr>
-                            <td>
-                                <input type="text" name="prdid1">
-                            </td>
-                            <td>
-                                <input type="text" name="prdmodel1">
-                            </td>
-                            <td>
-                                <input type="text" name="prdbrand1">
-                            </td>
-                            <td>
-                                <input type="text" name="prddetil1">
-                            </td>
-                            <td>
-                                <input type="text" name="amount1">
-                            </td>
+                            <td width="10%">1</td>
+                            <td width="10%"><textarea name="row[0][item]"></textarea></td>
+                            <td width="15%"><textarea name="row[0][description]"></textarea></td>
+                            <td width="20%"><input type="text" name="row[0][serial]" data-role="tagsinput"></td>
+                            <td width="10%"><input type="number" name="row[0][quantity]"></td>
+                            <td width="10%"><input type="number" name="row[0][unitprice]"></td>
+                            <td width="10%"><input type="number" name="row[0][warrenty]"></td>
+                            <td width="10%"><input type="number" name="row[0][amount]"></td>
+                            <td width="5%"></td>
                         </tr>
-                        <tr>
-                            <td>
-                                <input type="text" name="prdid1">
-                            </td>
-                            <td>
-                                <input type="text" name="prdmodel1">
-                            </td>
-                            <td>
-                                <input type="text" name="prdbrand1">
-                            </td>
-                            <td>
-                                <input type="text" name="prddetil1">
-                            </td>
-                            <td>
-                                <input type="text" name="amount1">
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>
-                                <input type="text" name="prdid1">
-                            </td>
-                            <td>
-                                <input type="text" name="prdmodel1">
-                            </td>
-                            <td>
-                                <input type="text" name="prdbrand1">
-                            </td>
-                            <td>
-                                <input type="text" name="prddetil1">
-                            </td>
-                            <td>
-                                <input type="text" name="amount1">
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>
-                                <input type="text" name="prdid1">
-                            </td>
-                            <td>
-                                <input type="text" name="prdmodel1">
-                            </td>
-                            <td>
-                                <input type="text" name="prdbrand1">
-                            </td>
-                            <td>
-                                <input type="text" name="prddetil1">
-                            </td>
-                            <td>
-                                <input type="text" name="amount1">
-                            </td>
-                        </tr>
-
                     </table>
+                    <div align="right">
+                        <button type="button" name="add" id="add" class="btn btn-success btn-xs">+</button>
+                    </div>
                 </div>
 
             </div>
@@ -191,6 +138,32 @@
             });
         });
 
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            var count = 0;
+            $('#add').click(function(){
+                count = count + 1;
+                var html_code = "<tr id='row"+count+"'>";
+                html_code +="<td>"+count+"</td>";
+                html_code += "<td><textarea name='row["+count+"][item]'></textarea></td>";
+                html_code += "<td><textarea name='row["+count+"][description]'></textarea></td>";
+                html_code += "<td><input type='text' name='row["+count+"][serial]' data-role='tagsinput'></td>";
+                html_code += "<td><input type='number' name='row["+count+"][quantity]'></td>";
+                html_code += "<td><input type='number' name='row["+count+"][unitprice]'></td>";
+                html_code += "<td><input type='number' name='row["+count+"][warrenty]'></td>";
+                html_code += "<td><input type='number' name='row["+count+"][amount]'></td>";
+                html_code += "<td><button type='button' name='remove' data-row='row"+count+"' class='btn btn-danger btn-xs remove'>-</button></td>";
+                html_code += "</tr>";
+                $('#crud_table').append(html_code);
+            });
+
+            $(document).on('click', '.remove', function(){
+                var delete_row = $(this).data("row");
+                $('#' + delete_row).remove();
+            });
+        });
     </script>
 
     {{--dropdown searchable--}}
