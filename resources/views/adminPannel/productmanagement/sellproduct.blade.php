@@ -61,123 +61,116 @@
             <hr>
             <div class="row">
                     <table class="table table-bordered table-responsive table-striped ">
-                        <tr>
-                            <th>SL</th>
-                            <th>Des.</th>
-                            <th>serial</th>
-                            <th>Qty</th>
-                            <th>Unit Price</th>
-                            <th>Warrenty</th>
-                            <th>Amount</th>
-                        </tr>
-                        <tr class="form-group">
-                            <td>
-                                1
-                            </td>
+                        <thead>
+                            <tr>
+                                <th>SL</th>
+                                <th>Des.</th>
+                                <th>serial</th>
+                                <th>Qty</th>
+                                <th>Unit Price</th>
+                                <th>Warrenty</th>
+                                <th>Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="form-group">
+                                <td>
+                                    4
+                                </td>
+                                <td>
+                                    <textarea name="row[1][description]"  class="form-control"></textarea>
+                                </td>
+                                <td><input type="text" name="row[1][serial]"   data-role="tagsinput" ></td>
+                                <td>
+                                    <input type="number" name="row[1][Qty]"  class="quantity form-control" value="1" >
+                                </td>
+                                <td>
+                                    <input type="number" name="row[1][unitprice]"  class="form-control unitprice">
+                                </td>
 
-                            <td>
-                                <textarea name="row[0][description]" cols="30" class="form-control"></textarea>
+                                <td>
+                                    <input type="text" name="row[1][warrenty]" class="form-control">
+                                </td>
+                                <td>
+                                    <input type="text" name="row[1][amount]"  class="form-control total" >
+                                </td>
 
-                            </td>
-                            <td><input type="text" name="row[0][serial]" id="dynamic" data-role="tagsinput"></td>
-                            <td>
-                                <input type="number" name="row[0][Qty]" class="form-control" id="quantity1" value="1" >
+                            </tr>
 
-                            </td>
-                            <td>
-                                <input type="number" name="row[0][unitprice]" class="form-control" id="unitprice1">
+                            <tr class="form-group">
 
-                            </td>
+                                <td>
+                                    4
+                                </td>
+                                <td>
+                                    <textarea name="row[1][description]"  class="form-control"></textarea>
+                                </td>
+                                <td><input type="text" name="row[1][serial]"   data-role="tagsinput" ></td>
+                                <td>
+                                    <input type="number" name="row[1][Qty]"  class="quantity form-control" value="1" >
+                                </td>
+                                <td>
+                                    <input type="number" name="row[1][unitprice]"  class="unitprice form-control">
+                                </td>
 
-                            <td>
-                                <input type="text" name="row[0][warrenty]" class="form-control">
+                                <td>
+                                    <input type="text" name="row[1][warrenty]" class="form-control">
+                                </td>
+                                <td>
+                                    <input type="text" name="row[1][amount]"  class="form-control total" >
+                                </td>
 
-                            </td>
-                            <td>
+                            </tr>
 
-                                <input type="text" name="row[0][amount]" class="form-control" value="0" id="total1">
+                            <tr class="form-group">
+                                <td>
+                                    4
+                                </td>
+                                <td>
+                                    <textarea name="row[1][description]"  class="form-control"></textarea>
+                                </td>
+                                <td><input type="text" name="row[1][serial]"   data-role="tagsinput" ></td>
+                                <td>
+                                    <input type="number" name="row[1][Qty]"  class="quantity form-control" value="1" >
+                                </td>
+                                <td>
+                                    <input type="number" name="row[1][unitprice]"  class="unitprice form-control">
+                                </td>
 
-                            </td>
+                                <td>
+                                    <input type="text" name="row[1][warrenty]" class="form-control">
+                                </td>
+                                <td>
+                                    <input type="text" name="row[1][amount]"  class="form-control total" >
+                                </td>
 
-                        </tr>
+                            </tr>
 
-                        <tr class="form-group">
+                            <tr class="form-group">
 
-                            <td>
-                                2
-                            </td>
-                            <td>
-                                <textarea name="row[1][description]"  class="form-control"></textarea>
-                            </td>
-                            <td><input type="text" name="row[1][serial]"   data-role="tagsinput"></td>
-                            <td>
-                                <input type="number" name="row[1][Qty]" class="form-control" value="1" id="quantity2">
-                            </td>
-                            <td>
-                                <input type="number" name="row[1][unitprice]" class="form-control" id="unitprice2">
-                            </td>
+                                <td>
+                                    4
+                                </td>
+                                <td>
+                                    <textarea name="row[1][description]"  class="form-control"></textarea>
+                                </td>
+                                <td><input type="text" name="row[1][serial]"   data-role="tagsinput" ></td>
+                                <td>
+                                    <input type="number" name="row[1][Qty]"  class="quantity form-control" value="1" >
+                                </td>
+                                <td>
+                                    <input type="number" name="row[1][unitprice]"  class="unitprice form-control">
+                                </td>
 
-                            <td>
-                                <input type="text" name="row[1][warrenty]" class="form-control">
-                            </td>
-                            <td>
-                                <input type="text" name="row[1][amount]" class="form-control" value="0" id="total2">
-                            </td>
+                                <td>
+                                    <input type="text" name="row[1][warrenty]" class="form-control">
+                                </td>
+                                <td>
+                                    <input type="text" name="row[1][amount]" class="form-control total" >
+                                </td>
 
-                        </tr>
-
-                        <tr class="form-group">
-                            <td>
-                                3
-                            </td>
-
-                            <td>
-                                <textarea name="row[1][description]"  class="form-control"></textarea>
-
-                            </td>
-                            <td><input type="text" name="row[1][serial]"   data-role="tagsinput"></td>
-                            <td>
-                                <input type="number" name="row[1][Qty]" class="form-control" value="1" id="quantity3">
-
-                            </td>
-                            <td>
-                                <input type="number" name="row[1][unitprice]" class="form-control"  id="unitprice3">
-
-                            </td>
-
-                            <td>
-                                <input type="text" name="row[1][warrenty]" class="form-control">
-                            </td>
-                            <td>
-                                <input type="text" name="row[1][amount]" class="form-control" value="0" id="total3">
-                            </td>
-
-                        </tr>
-
-                        <tr class="form-group">
-
-                            <td>
-                                4
-                            </td>
-                            <td>
-                                <textarea name="row[1][description]"  class="form-control"></textarea>
-                            </td>
-                            <td><input type="text" name="row[1][serial]"   data-role="tagsinput" ></td>
-                            <td>
-                                <input type="number" name="row[1][Qty]"  id="quantity4" value="1" >
-                            </td>
-                            <td>
-                                <input type="number" name="row[1][unitprice]"  id="unitprice4">
-                            </td>
-
-                            <td>
-                                <input type="text" name="row[1][warrenty]" class="form-control">
-                            </td>
-                            <td>
-                                <input type="text" name="row[1][amount]" value="0" class="form-control"  id="total4">
-                            </td>
-
-                        </tr>
+                            </tr>
+                        </tbody>
 
 
                     </table>
@@ -190,7 +183,7 @@
 {{--                <div class="col-md-3">--}}
                 <div class="pull-right" style="padding-right: 35px;">
                     <label>Total Amount:</label>
-                    <label>1000000</label>
+                    <label class="totalamount"></label>
                 </div>
 
 {{--                </div>--}}
@@ -210,6 +203,26 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
 
+
+{{--    calculation of unit price and quantity and finally show total total amount--}}
+<script type="text/javascript">
+    $('tbody').delegate('.quantity,.total,.unitprice','keyup',function () {
+       var tr=$(this).parent().parent();
+       var quantity=tr.find('.quantity').val();
+        var unitprice=tr.find('.unitprice').val();
+        var amount=quantity*unitprice;
+        tr.find('.total').val(amount);
+        totalamount();
+    });
+function totalamount() {
+    var total=0;
+    $('.total').each(function () {
+        var amount=$(this).val()-0;
+        total +=amount;
+    })
+    $('.totalamount').html(total);
+}
+</script>
 {{--    after select user show text area of custer information--}}
     <script>
         $(document).ready(function () {
