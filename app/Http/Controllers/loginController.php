@@ -38,10 +38,11 @@ public function indexs(){
 public function submit(Request $request)
 {
     $rows=$request->row;
-$data=DB::table('tests')->insert($rows);
-if ($data){
-    echo "success";
-}
+    print_r($rows);
+//$data=DB::table('tests')->insert($rows);
+//if ($data){
+//    echo "success";
+//}
 }
 
 }

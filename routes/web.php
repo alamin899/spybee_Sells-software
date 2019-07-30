@@ -15,7 +15,9 @@ Route::get('/', function () {
     return view('login.home.home');
 });
 
-
+Route::get('/test1', function () {
+    return view('mulitipledatainsert');
+});
 
 //for dashbord view by login
 //this is when user inter by login

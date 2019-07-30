@@ -18,8 +18,10 @@ class productmanagementController extends Controller
     }
     //sells product view
     public function viewsell(){
+        $invoices=DB::table('invoicenos')->orderBy('id','desc')->pluck('invoiceno')->first();
+        $totalinvoice=$invoices+1;
         $customers=DB::table('customers')->get();
-        return view('adminPannel.productmanagement.sellproduct',['customers'=>$customers]);
+        return view('adminPannel.productmanagement.sellproduct',['customers'=>$customers],['invoices'=>$totalinvoice]);
             }
 
 

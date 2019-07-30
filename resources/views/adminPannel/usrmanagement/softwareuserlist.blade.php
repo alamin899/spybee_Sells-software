@@ -99,7 +99,7 @@
                             success:function (data) {
                                 if (data == "success"){
                                     swal('wow','successfully delete','success');
-                                    list()
+
                                 }
                                 else
                                     swal('Opps','Not Deleted','warning')

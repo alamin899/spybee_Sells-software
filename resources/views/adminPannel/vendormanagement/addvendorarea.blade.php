@@ -113,7 +113,8 @@
                             data:{"id":id,"_token":token},
                             success:function (data) {
                                 if (data == "success"){
-                                    swal('wow','successfully delete','success');
+                                     swal('wow','successfully deleted','success');
+
 
                                 }
                                 else
@@ -127,8 +128,7 @@
                         swal("Your imaginary file is safe!");
                     }
                 });
-        })
-
+        });
 
     </script>
 @endsection()
