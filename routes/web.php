@@ -112,7 +112,7 @@ Route::group(['middleware'=>'check'],function (){
     //======================================================================
     //                Start Vendor Management
     //======================================================================
-    Route::get('vendor/addview','vendormanagementController@vendoraddview')->name('vendoraddview');
+    Route::get('vendorareainsert','vendormanagementController@vendoraddview')->name('vendoraddview');
     Route::get('vendor/List','vendormanagementController@vendorlist')->name('vendorlist');
     Route::get('vendor/Area','vendormanagementController@addvendorarea')->name('addvendorarea');
     //vendor insert

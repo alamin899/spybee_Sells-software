@@ -30,6 +30,7 @@ public function vendorareainsert(Request $request){
     );
     if ($insert){
         return response()->json("success");
+
     }
     else
         return response()->json("error");
