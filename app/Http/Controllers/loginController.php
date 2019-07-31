@@ -32,7 +32,7 @@ public function dashbord(){
 }
 // Testing multiple data insert
 public function indexs(){
-       return view('test');
+       return view('adminPannel.productmanagement.invoice');
 }
 
 public function submit(Request $request)
