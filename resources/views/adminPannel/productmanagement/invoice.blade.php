@@ -36,10 +36,10 @@
 
                         </div>
                         <div class="col-md-9">
-                            <label>{{$products->sellsno}}</label><br>
-                            <label>SPYBEE NETWORK</label><br>
-                            <label>HOUSE:1173,6FL,AVENEUE 11,MIRPUR DOHS</label><br>
-                            <label>{{$products->customer}}</label><br>
+                            <label>#AMS{{$products->sellsno}}</label><br>
+                            <label>{{$customer->customername}}</label><br>
+                            <label>{{$customer->customeraddress}}</label><br>
+                            <label>{{$customer->phone}}</label><br>
                         </div>
                     </div>
 
@@ -73,8 +73,8 @@
 
             <!-- Table row -->
             <div class="row">
-                <div class="col-12 table-responsive">
-                    <table class="table table-striped">
+                <div class="col-12 table-responsive ">
+                    <table class="table table-striped table-bordered">
                         <thead>
                         <tr>
                             <th>SL</th>
@@ -90,8 +90,8 @@
 
                         @foreach($products as $key=>$product)
                         <tr>
-                            <td></td>
-                            <td></td>
+                            <td>1</td>
+                            <td>camera</td>
                             <td>766x588FREDS56</td>
                             <td>1</td>
                             <td>3700</td>
@@ -140,7 +140,7 @@
 
 
                     <div class="table-responsive">
-                        <table class="table">
+                        <table class="table table-bordered">
                             <tbody><tr>
                             <th style="width:50%">Subtotal:</th>
                                 <td>3700TK</td>

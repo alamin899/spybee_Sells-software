@@ -19,7 +19,7 @@
                     <select class="form-control customer"  name="customer" id="selldropdown">
                         <option value="0">--select--</option>
                         @foreach($customers as $customer)
-                        <option  value="{{$customer->phone}}">{{$customer->customername}} {{$customer->phone}}</option>
+                        <option  value="{{$customer->id}}">{{$customer->customername}} {{$customer->phone}}</option>
                             @endforeach
                     </select>
 

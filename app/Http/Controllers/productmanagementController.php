@@ -26,16 +26,17 @@ class productmanagementController extends Controller
 
 
             public function customerinfo($id){
-                 $customer=DB::table('customers')->where('phone',$id)->first();
+                 $customer=DB::table('customers')->where('id',$id)->first();
 
                  echo '<label>Name:</label>'.$customer->customername.'<hr><label>Email:</label>'.$customer->customeremail.'<hr><label>Phone:</label>'.$customer->phone.'<hr><label>Address:</label>'.
                      $customer->customeraddress;
             }
 
             public function sellsproduct(Request $request){
+            $id=$request->customer;
+            $customer=DB::table('customers')->where('id',$id)->first();
 
-
-             return view('adminPannel.productmanagement.invoice',['products'=>$request]);
+             return view('adminPannel.productmanagement.invoice',['products'=>$request],['customer'=>$customer]);
 
             }
 }
