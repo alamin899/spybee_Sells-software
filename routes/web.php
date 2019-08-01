@@ -96,6 +96,8 @@ Route::group(['middleware'=>'check'],function (){
     Route::post('phone_available','vendormanagementController@phone_available')->name('phone_available');
     //sells product view
     Route::get('sells','productmanagementController@viewsell')->name('viewsell');
+    //    product sells
+    Route::post('sellsproduct','productmanagementController@sellsproduct')->name('sellsproduct');
     //this is for when user already login and want to dashbord by url
 
     Route::get('admin/addproductview','productmanagementController@addproductview')->name('addproductview');
@@ -141,5 +143,5 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('test','loginController@indexs');
+Route::get('test','loginController@indexs')->name('test');
 Route::post('testing','loginController@submit')->name('submitmultiple');

@@ -31,4 +31,11 @@ class productmanagementController extends Controller
                  echo '<label>Name:</label>'.$customer->customername.'<hr><label>Email:</label>'.$customer->customeremail.'<hr><label>Phone:</label>'.$customer->phone.'<hr><label>Address:</label>'.
                      $customer->customeraddress;
             }
+
+            public function sellsproduct(Request $request){
+
+
+                return view('adminPannel.productmanagement.invoice',['products'=>$request]);
+
+            }
 }

@@ -11,7 +11,8 @@
         </div>
         <!-- /.card-header -->
         <!-- form start -->
-        <form role="form" class="form-control">
+        <form role="form" action="{{route('sellsproduct')}}" method="post" class="form-control">
+            {{csrf_field()}}
             <div class="row">
                 <div class="col-md-2 form-control">
                     <label>Customer</label>
@@ -32,7 +33,7 @@
                         </div>
                         <div class="col form-control">
                             <label>Sells No</label>
-                            <input type="text" name="sellsno" value="A0011NV{{$invoices}}">
+                            <input type="text" name="sellsno" value="{{$invoices}}">
                         </div>
                     </div>
 
@@ -59,148 +60,66 @@
 
             </div>
             <hr>
-
-{{--            <div class="container table-bordered">--}}
-{{--                <div class="row" >--}}
-{{--                    <div class="col-md-1"><label>SL</label></div>--}}
-{{--                    <div class="col-md-3"><label>Desc.</label></div>--}}
-{{--                    <div class="col-md-3"><label>Serial</label></div>--}}
-{{--                    <div class="col-md-1"><label>Qty</label></div>--}}
-{{--                    <div class="col-md-1"><label>Unit Price</label></div>--}}
-{{--                    <div class="col-md-2"><label>Warrenty</label></div>--}}
-{{--                    <div class="col-md-1"><label>Amount</label></div>--}}
-{{--                </div>--}}
+{{--    sells table        https://paste.ubuntu.com/p/s8YRhxRz3W/--}}
 
 
-{{--                <div class="row" >--}}
-{{--                    <div class="col-md-1">1</div>--}}
-{{--                    <div class="col-md-3"><textarea name="row[0][description]"  class="form-control"></textarea></div>--}}
-{{--                    <div class="col-md-3"><input type="text" name="row[0][serial]"   data-role="tagsinput" ></div>--}}
-{{--                    <div class="col-md-1"> <input type="number" name="row[0][Qty]"  class="quantity form-control" value="1" ></div>--}}
-{{--                    <div class="col-md-1"> <input type="text" name="row[0][unitprice]"  class="form-control unitprice"></div>--}}
-{{--                    <div class="col-md-2"><input type="text" name="row[0][warrenty]" class="form-control"></div>--}}
-{{--                    <div class="col-md-1"><input type="text" name="row[0][amount]"  class="form-control total" ></div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
+            <div class="container tbody table table-bordered table-striped">
+                <div class="row col-md-12 ">
+                    <div class="col-md-1"><label>SL</label></div>
+                    <div class="col-md-3"><label>Desc.</label></div>
+                    <div class="col-md-3"><label>Serial</label></div>
+                    <div class="col-md-1"><label>Qty</label></div>
+                    <div class="col-md-1"><label>Unit Price</label></div>
+                    <div class="col-md-2"><label>Warrenty</label></div>
+                    <div class="col-md-1"><label>Amount</label></div>
+                </div>
+                <div>
 
+                    <div class="row col-md-12 ">
+                        <div class="col-md-1">1</div>
+                        <div class="col-md-3"><textarea name="row[0][description]"  class="form-control"></textarea></div>
+                        <div class="col-md-3"><input type="text" name="row[0][serial]"   data-role="tagsinput" ></div>
+                        <div class="col-md-1"><input type="number" name="row[0][Qty]"  class="quantity form-control" value="1" ></div>
+                        <div class="col-md-1"><input type="text" name="row[0][unitprice]"  class="form-control unitprice"></div>
+                        <div class="col-md-2"> <input type="text" name="row[0][warrenty]" class="form-control"></div>
+                        <div class="col-md-1"> <input type="text" name="row[0][amount]"  class="form-control total" ></div>
+                    </div>
+                    <hr>
 
-            <div class="row">
-                    <table class="table table-bordered table-responsive table-striped ">
-                        <thead>
-                            <tr>
-                                <th>SL</th>
-                                <th>Des.</th>
-                                <th>serial</th>
-                                <th>Qty</th>
-                                <th>Unit Price</th>
-                                <th>Warrenty</th>
-                                <th>Amount</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr class="form-group">
-                                <td>
-                                    1
-                                </td>
-                                <td>
-                                    <textarea name="row[0][description]"  class="form-control"></textarea>
-                                </td>
-                                <td><input type="text" name="row[0][serial]"   data-role="tagsinput" ></td>
-                                <td>
-                                    <input type="number" name="row[0][Qty]"  class="quantity form-control" value="1" >
-                                </td>
-                                <td>
-                                    <input type="text" name="row[0][unitprice]"  class="form-control unitprice">
-                                </td>
+                    <div class="row col-md-12">
+                        <div class="col-md-1">2</div>
+                        <div class="col-md-3"><textarea name="row[1][description]"  class="form-control"></textarea></div>
+                        <div class="col-md-3"><input type="text" name="row[1][serial]"   data-role="tagsinput" ></div>
+                        <div class="col-md-1"><input type="number" name="row[1][Qty]"  class="quantity form-control" value="1" ></div>
+                        <div class="col-md-1"><input type="text" name="row[1][unitprice]"  class="form-control unitprice"></div>
+                        <div class="col-md-2"> <input type="text" name="row[1][warrenty]" class="form-control"></div>
+                        <div class="col-md-1"> <input type="text" name="row[1][amount]"  class="form-control total" ></div>
+                    </div>
 
-                                <td>
-                                    <input type="text" name="row[0][warrenty]" class="form-control">
-                                </td>
-                                <td>
-                                    <input type="text" name="row[0][amount]"  class="form-control total" >
-                                </td>
+                    <hr>
 
-                            </tr>
+                    <div class="row col-md-12">
+                        <div class="col-md-1">3</div>
+                        <div class="col-md-3"><textarea name="row[2][description]"  class="form-control"></textarea></div>
+                        <div class="col-md-3"><input type="text" name="row[2][serial]"   data-role="tagsinput" ></div>
+                        <div class="col-md-1"><input type="number" name="row[2][Qty]"  class="quantity form-control" value="1" ></div>
+                        <div class="col-md-1"><input type="text" name="row[2][unitprice]"  class="form-control unitprice"></div>
+                        <div class="col-md-2"> <input type="text" name="row[2][warrenty]" class="form-control"></div>
+                        <div class="col-md-1"> <input type="text" name="row[2][amount]"  class="form-control total" ></div>
+                    </div>
 
-                            <tr class="form-group">
+                    <hr>
 
-                                <td>
-                                    2
-                                </td>
-                                <td>
-                                    <textarea name="row[1][description]"  class="form-control"></textarea>
-                                </td>
-                                <td><input type="text" name="row[1][serial]"   data-role="tagsinput" ></td>
-                                <td>
-                                    <input type="number" name="row[1][Qty]"  class="quantity form-control" value="1" >
-                                </td>
-                                <td>
-                                    <input type="text" name="row[1][unitprice]"  class="unitprice form-control">
-                                </td>
-
-                                <td>
-                                    <input type="text" name="row[1][warrenty]" class="form-control">
-                                </td>
-                                <td>
-                                    <input type="text" name="row[1][amount]"  class="form-control total" >
-                                </td>
-
-                            </tr>
-
-                            <tr class="form-group">
-                                <td>
-                                    3
-                                </td>
-                                <td>
-                                    <textarea name="row[2][description]"  class="form-control"></textarea>
-                                </td>
-                                <td><input type="text" name="row[2][serial]"   data-role="tagsinput" ></td>
-                                <td>
-                                    <input type="number" name="row[2][Qty]"  class="quantity form-control" value="1" >
-                                </td>
-                                <td>
-                                    <input type="text" name="row[2][unitprice]"  class="unitprice form-control">
-                                </td>
-
-                                <td>
-                                    <input type="text" name="row[2][warrenty]" class="form-control">
-                                </td>
-                                <td>
-                                    <input type="text" name="row[2][amount]"  class="form-control total" >
-                                </td>
-
-                            </tr>
-
-                            <tr class="form-group">
-
-                                <td>
-                                    4
-                                </td>
-                                <td>
-                                    <textarea name="row[3][description]"  class="form-control"></textarea>
-                                </td>
-                                <td><input type="text" name="row[3][serial]"   data-role="tagsinput" ></td>
-                                <td>
-                                    <input type="number" name="row[3][Qty]"  class="quantity form-control" value="1" >
-                                </td>
-                                <td>
-                                    <input type="text" name="row[3][unitprice]"  class="unitprice form-control">
-                                </td>
-
-                                <td>
-                                    <input type="text" name="row[3][warrenty]" class="form-control">
-                                </td>
-                                <td>
-                                    <input type="text" name="row[3][amount]" class="form-control total" >
-                                </td>
-
-                            </tr>
-                        </tbody>
-
-
-                    </table>
-
-
+                    <div class="row col-md-12">
+                        <div class="col-md-1">4</div>
+                        <div class="col-md-3"><textarea name="row[3][description]"  class="form-control"></textarea></div>
+                        <div class="col-md-3"><input type="text" name="row[3][serial]"   data-role="tagsinput" ></div>
+                        <div class="col-md-1"><input type="number" name="row[3][Qty]"  class="quantity form-control" value="1" ></div>
+                        <div class="col-md-1"><input type="text" name="row[3][unitprice]"  class="form-control unitprice"></div>
+                        <div class="col-md-2"> <input type="text" name="row[3][warrenty]" class="form-control"></div>
+                        <div class="col-md-1"> <input type="text" name="row[3][amount]"  class="form-control total" ></div>
+                    </div>
+                </div>
             </div>
 
             <div >
@@ -210,6 +129,7 @@
                     <label>Total Amount:</label>
                     <label class="totalamount"></label>
                 </div>
+                <br>
 
 {{--                </div>--}}
             </div>
@@ -221,7 +141,8 @@
             <!-- /.card-body -->
 
             <div class="card-footer">
-                <button type="submit" class="btn btn-success btn-block">Sells Product</button>
+{{--                <a href="{{route('test')}}"  class="btn btn-success btn-block sellsbutton" >Sells</a>--}}
+                <button class="btn btn-success btn-block">Sells</button>
             </div>
         </form>
     </div>
@@ -231,7 +152,7 @@
 
 {{--    calculation of unit price and quantity and finally show total total amount--}}
 <script type="text/javascript">
-    $('tbody').delegate('.quantity,.total,.unitprice','keyup',function () {
+    $('.tbody').delegate('.quantity,.total,.unitprice','keyup',function () {
        var tr=$(this).parent().parent();
        var quantity=tr.find('.quantity').val();
         var unitprice=tr.find('.unitprice').val();
@@ -246,7 +167,21 @@ function totalamount() {
         total +=amount;
     })
     $('.totalamount').html(total);
+
 }
+{{--$(".sellsbutton").on('click',function (e) {--}}
+{{--    e.preventDefault();--}}
+{{--    var token = $("meta[name='csrf-token']").attr("content");--}}
+{{--    $.ajax({--}}
+{{--        action:"{{route('test')}}",--}}
+{{--        method:"post",--}}
+{{--        data:{_token: token},--}}
+{{--        --}}
+{{--    })--}}
+{{--})--}}
+
+
+
 </script>
 {{--    after select user show text area of custer information--}}
     <script>

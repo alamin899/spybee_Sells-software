@@ -25,7 +25,7 @@
                     <label>User Name</label>
                     <input type="text" class="form-control"  name="name">
                 </div>
-                <div class="col">
+                <div class="col emailcheck">
                     <label>User Email</label>
                     <input type="email" class="form-control"  name="email" id="emailcheck">
 
@@ -52,7 +52,7 @@
 
             </div>
             <div class="row">
-                <div class="col">
+                <div class="col phonecheck">
                     <label>User Phone</label>
                     <input type="number" class="form-control"  name="phone" id="phone">
                     <span id="error_phone"></span>
@@ -124,7 +124,7 @@
     {{--ajax of email availability check--}}
     $(document).ready(function(){
 
-        $('#emailcheck').blur(function(){
+        $('.emailcheck').delegate('#emailcheck','keyup',function(){
             var error_email = '';
             var email = $(this).val();
             console.log(email);
@@ -174,7 +174,7 @@
 
         $(document).ready(function(){
 
-            $('#phone').blur(function(){
+            $('.phonecheck').delegate('#phone','keyup',function(){
                 var phone_email = '';
                 var phone = $(this).val();
                 console.log(phone);
