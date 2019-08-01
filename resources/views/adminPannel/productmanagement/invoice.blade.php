@@ -5,7 +5,7 @@
 
 @section('body')
 
-<div class="row">
+<div class="row" >
     <div class="col-12">
 
 
@@ -24,7 +24,7 @@
             <!-- title row -->
 
             <!-- info row -->
-            <div class="row invoice-info">
+            <div class="row invoice-info" >
                 <div class="col-sm-8 invoice-col">
                     <div class="row">
                         <div class="col-md-3">
@@ -168,18 +168,24 @@
             <!-- this row will not appear when printing -->
             <div class="row no-print">
                 <div class="col-12">
-                    <a href="" target="_blank" class="btn btn-default"><i class="fa fa-print"></i> Print</a>
-                    <button type="button" class="btn btn-success float-right"><i class="fa fa-credit-card"></i> Submit
-                        Payment
-                    </button>
-                    <button type="button" class="btn btn-primary float-right" style="margin-right: 5px;">
-                        <i class="fa fa-download"></i> Generate PDF
-                    </button>
+                    <a href="" target="_blank"  onclick="pri()" class="btn btn-default float-right"><i class="fa fa-print"></i> Print</a>
+{{--                    <button type="button" class="btn btn-success float-right"><i class="fa fa-credit-card"></i> Submit--}}
+{{--                        Payment--}}
+{{--                    </button>--}}
+{{--                    <button type="button" class="btn btn-primary float-right" style="margin-right: 5px;">--}}
+{{--                        <i class="fa fa-download"></i> Generate PDF--}}
+{{--                    </button>--}}
                 </div>
             </div>
         </div>
         <!-- /.invoice -->
     </div><!-- /.col -->
 </div>
+    <script>
+        function pri(){
+            window.print();
+        }
+
+    </script>
 
 @endsection

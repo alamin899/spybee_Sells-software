@@ -35,7 +35,7 @@ class productmanagementController extends Controller
             public function sellsproduct(Request $request){
 
 
-                return view('adminPannel.productmanagement.invoice',['products'=>$request]);
+             return view('adminPannel.productmanagement.invoice',['products'=>$request]);
 
             }
 }
