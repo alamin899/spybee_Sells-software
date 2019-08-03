@@ -33,10 +33,13 @@ class productmanagementController extends Controller
             }
 
             public function sellsproduct(Request $request){
-            $id=$request->customer;
-            $customer=DB::table('customers')->where('id',$id)->first();
 
-             return view('adminPannel.productmanagement.invoice',['products'=>$request],['customer'=>$customer]);
+                $id=$request->customer;
+                $customer=DB::table('customers')->where('id',$id)->first();
+
+
+
+                return view('adminPannel.productmanagement.invoice',['products'=>$request],['customer'=>$customer]);
 
             }
 }

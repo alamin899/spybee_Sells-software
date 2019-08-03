@@ -66,79 +66,45 @@
             <div class="container tbody table table-bordered table-striped">
                 <div class="row col-md-12 ">
                     <div class="col-md-1"><label>SL</label></div>
-                    <div class="col-md-3"><label>Desc.</label></div>
+                    <div class="col-md-2"><label>Desc.</label></div>
                     <div class="col-md-3"><label>Serial</label></div>
                     <div class="col-md-1"><label>Qty</label></div>
                     <div class="col-md-1"><label>Unit Price</label></div>
                     <div class="col-md-2"><label>Warrenty</label></div>
                     <div class="col-md-1"><label>Amount</label></div>
+                    <div class="col-md-1" style="padding-top: 8px;"> <a class=" btn btn-success  addrow"><i class="fa fa-plus"></i></a></div>
                 </div>
                 <div>
 
                     <div class="row col-md-12 ">
                         <div class="col-md-1">1</div>
-                        <div class="col-md-3"><textarea name="row[0][description]"  class="form-control"></textarea></div>
-                        <div class="col-md-3"><input type="text" name="row[0][serial]"   data-role="tagsinput" ></div>
-                        <div class="col-md-1"><input type="number" name="row[0][Qty]"  class="quantity form-control" value="1" ></div>
-                        <div class="col-md-1"><input type="text" name="row[0][unitprice]"  class="form-control unitprice"></div>
-                        <div class="col-md-2"> <input type="text" name="row[0][warrenty]" class="form-control"></div>
-                        <div class="col-md-1"> <input type="text" name="row[0][amount]"  class="form-control total" ></div>
-                    </div>
-                    <hr>
-
-                    <div class="row col-md-12">
-                        <div class="col-md-1">2</div>
-                        <div class="col-md-3"><textarea name="row[1][description]"  class="form-control"></textarea></div>
-                        <div class="col-md-3"><input type="text" name="row[1][serial]"   data-role="tagsinput" ></div>
-                        <div class="col-md-1"><input type="number" name="row[1][Qty]"  class="quantity form-control" value="1" ></div>
-                        <div class="col-md-1"><input type="text" name="row[1][unitprice]"  class="form-control unitprice"></div>
-                        <div class="col-md-2"> <input type="text" name="row[1][warrenty]" class="form-control"></div>
-                        <div class="col-md-1"> <input type="text" name="row[1][amount]"  class="form-control total" ></div>
+                        <div class="col-md-2"><textarea name="description[]"  class="form-control"></textarea></div>
+                        <div class="col-md-3"><textarea name="serial[]" class="form-control" ></textarea></div>  {{--data-role="tagsinput"--}}
+                        <div class="col-md-1"><input type="number" name="qty[]"  class="quantity form-control" value="1" ></div>
+                        <div class="col-md-1"><input type="text" name="unitprice[]"  class="form-control unitprice"></div>
+                        <div class="col-md-2"> <input type="text" name="warrenty[]" class="form-control"></div>
+                        <div class="col-md-1"> <input type="text" name="amount[]"  class="form-control total" ></div>
+                        <div class="col-md-1"></div>
                     </div>
 
-                    <hr>
+                    <br>
 
-                    <div class="row col-md-12">
-                        <div class="col-md-1">3</div>
-                        <div class="col-md-3"><textarea name="row[2][description]"  class="form-control"></textarea></div>
-                        <div class="col-md-3"><input type="text" name="row[2][serial]"   data-role="tagsinput" ></div>
-                        <div class="col-md-1"><input type="number" name="row[2][Qty]"  class="quantity form-control" value="1" ></div>
-                        <div class="col-md-1"><input type="text" name="row[2][unitprice]"  class="form-control unitprice"></div>
-                        <div class="col-md-2"> <input type="text" name="row[2][warrenty]" class="form-control"></div>
-                        <div class="col-md-1"> <input type="text" name="row[2][amount]"  class="form-control total" ></div>
-                    </div>
-
-                    <hr>
-
-                    <div class="row col-md-12">
-                        <div class="col-md-1">4</div>
-                        <div class="col-md-3"><textarea name="row[3][description]"  class="form-control"></textarea></div>
-                        <div class="col-md-3"><input type="text" name="row[3][serial]"   data-role="tagsinput" ></div>
-                        <div class="col-md-1"><input type="number" name="row[3][Qty]"  class="quantity form-control" value="1" ></div>
-                        <div class="col-md-1"><input type="text" name="row[3][unitprice]"  class="form-control unitprice"></div>
-                        <div class="col-md-2"> <input type="text" name="row[3][warrenty]" class="form-control"></div>
-                        <div class="col-md-1"> <input type="text" name="row[3][amount]"  class="form-control total" ></div>
-                    </div>
                 </div>
+
+
+
             </div>
 
             <div >
-{{--                <div class="col-md-10"></div>--}}
-{{--                <div class="col-md-3">--}}
-                <div class="pull-right" style="padding-right: 35px;">
+                <div class="pull-right" style="padding-right: 35px;" >
                     <label>Total Amount:</label>
                     <label class="totalamount"></label>
+                <input type="hidden" name="totalamount" id="totalamount">
                 </div>
                 <br>
 
-{{--                </div>--}}
             </div>
 
-
-
-
-
-            <!-- /.card-body -->
 
             <div class="card-footer">
 {{--                <a href="{{route('test')}}"  class="btn btn-success btn-block sellsbutton" >Sells</a>--}}
@@ -166,23 +132,56 @@ function totalamount() {
         var amount=$(this).val()-0;
         total +=amount;
     })
-    $('.totalamount').html(total);
+      $('.totalamount').html(total);
+document.getElementById("totalamount").value=total;
+
 
 }
-{{--$(".sellsbutton").on('click',function (e) {--}}
-{{--    e.preventDefault();--}}
-{{--    var token = $("meta[name='csrf-token']").attr("content");--}}
-{{--    $.ajax({--}}
-{{--        action:"{{route('test')}}",--}}
-{{--        method:"post",--}}
-{{--        data:{_token: token},--}}
-{{--        --}}
-{{--    })--}}
-{{--})--}}
-
-
 
 </script>
+    {{--  End  calculation of unit price and quantity and finally show total total amount--}}
+
+
+    {{--add multiple row--}}
+    <script>
+    var count=1;
+        $('.addrow').on('click',function () {
+
+            addrow();
+        });
+        function addrow() {
+            count++;
+
+            var row='<div class="row col-md-12 ">' +
+                '<div class="col-md-1">'+count+'</div>' +
+                '<div class="col-md-2"><textarea name="serial[]"  class="form-control"></textarea></div>' +
+                '<div class="col-md-3"><textarea name="description[]" class="form-control" ></textarea></div> ' +
+                '<div class="col-md-1"><input type="number" name="qty[]"  class="quantity form-control" value="1" ></div>' +
+                '<div class="col-md-1"><input  type="text" name="unitprice[]"  class="form-control unitprice"></div>' +
+                '<div class="col-md-2"> <input type="text" name="warrenty[]" class="form-control"></div>' +
+                '<div class="col-md-1"> <input type="text" name="amount[]"  class="form-control total" ></div>' +
+                '<div class="col-md-1"><input type="button" class="name btn btn-danger" value="-"> </div>' +
+
+                '</div>'+
+                '<hr>';
+
+
+            $('.tbody').append(row);
+            // remove row
+            $('.name').on('click',function () {
+                $(this).parent().parent().remove();
+                count--;
+                totalamount();
+            })
+
+        };
+
+
+    </script>
+
+    {{--End add multiple row--}}
+
+
 {{--    after select user show text area of custer information--}}
     <script>
         $(document).ready(function () {

@@ -88,15 +88,17 @@
                         </thead>
                         <tbody>
 
-                        @foreach($products as $key=>$product)
+                        @foreach($products->serial as $key=>$product)
+
+
                         <tr>
-                            <td>1</td>
-                            <td>camera</td>
-                            <td>766x588FREDS56</td>
-                            <td>1</td>
-                            <td>3700</td>
-                            <td>1 YEAR</td>
-                            <td>3700</td>
+                            <td>{{$key+1}}</td>
+                            <td>{{$products->description[$key]}}</td>
+                            <td>{{$products->serial[$key]}}</td>
+                            <td>{{$products->qty[$key]}}</td>
+                            <td>{{$products->unitprice[$key]}}</td>
+                            <td>{{$products->warrenty[$key]}}</td>
+                            <td>{{$products->amount[$key]}}</td>
 
                         </tr>
                         @endforeach
@@ -143,7 +145,7 @@
                         <table class="table table-bordered">
                             <tbody><tr>
                             <th style="width:50%">Subtotal:</th>
-                                <td>3700TK</td>
+                                <td>{{$products->totalamount}}</td>
                             </tr>
                             <tr>
                                 <th>Add vat</th>
@@ -155,7 +157,7 @@
                             </tr>
                             <tr style="border-top:3px solid #212529;">
                                 <th >Net Payable Amount</th>
-                                <td>3700</td>
+                                <td>{{$products->totalamount}}</td>
                             </tr>
 
                             </tbody></table>
