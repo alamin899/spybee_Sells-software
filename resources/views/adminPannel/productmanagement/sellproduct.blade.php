@@ -154,8 +154,8 @@ document.getElementById("totalamount").value=total;
 
             var row='<div class="row col-md-12 ">' +
                 '<div class="col-md-1">'+count+'</div>' +
-                '<div class="col-md-2"><textarea name="serial[]"  class="form-control"></textarea></div>' +
-                '<div class="col-md-3"><textarea name="description[]" class="form-control" ></textarea></div> ' +
+                '<div class="col-md-2"><textarea name="description[]"  class="form-control"></textarea></div>' +
+                '<div class="col-md-3"><textarea name="serial[]" class="form-control" ></textarea></div> ' +
                 '<div class="col-md-1"><input type="number" name="qty[]"  class="quantity form-control" value="1" ></div>' +
                 '<div class="col-md-1"><input  type="text" name="unitprice[]"  class="form-control unitprice"></div>' +
                 '<div class="col-md-2"> <input type="text" name="warrenty[]" class="form-control"></div>' +

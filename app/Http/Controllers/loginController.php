@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Notifications\loginnotification;
+use Notification;
 use App\User;
 use Illuminate\Http\Request;
+//use Illuminate\Notifications\Notification;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
@@ -19,6 +22,9 @@ class loginController extends Controller
            $email=$request->email;
            $user=DB::table('users')->where('email','=',$email)->first();
            $request->session()->put('name',$user->name);
+//           Notification::send($user,new loginnotification($email));
+
+//           Notification::route('mail', $email)->notify(new loginnotification($email));
 
 
            return view('adminPannel.home.home');

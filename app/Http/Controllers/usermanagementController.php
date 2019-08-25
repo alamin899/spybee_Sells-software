@@ -35,11 +35,6 @@ class usermanagementController extends Controller
     }
 
     public function insertsofuser(Request $request){
-//        $pofimage=$request->file('profile_image');
-//        $imagename=$pofimage->getClientOriginalName();
-//        $directory='images/profileimage/';
-//        $imgurl=$directory.$imagename;
-//        $pofimage->move($directory,$imagename);
 
        $insert=DB::table('users')->insert(
            [

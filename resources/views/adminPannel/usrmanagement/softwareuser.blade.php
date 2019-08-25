@@ -18,7 +18,7 @@
         <!-- /.card-header -->
         <!-- form start -->
         <form role="form" class="form-control" id="softuserform" action="{{route('insertsoftwareuser')}}" method="post" enctype="multipart/form-data">
-            {{csrf_field()}}
+{{--            {{csrf_field()}}--}}
             <input type="hidden" name="_token" id="_token" value="<?php echo csrf_token(); ?>">
             <div class="row">
                 <div class="col">
@@ -127,7 +127,6 @@
         $('.emailcheck').delegate('#emailcheck','keyup',function(){
             var error_email = '';
             var email = $(this).val();
-            console.log(email);
             var _token = $('#_token').val();
             var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
             if(!filter.test(email))
