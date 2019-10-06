@@ -34,12 +34,42 @@ class productmanagementController extends Controller
 
             public function sellsproduct(Request $request){
 
+
                 $id=$request->customer;
+                $date=$request->selldate;
+                $invoice=$request->sellsno;
+
                 $customer=DB::table('customers')->where('id',$id)->first();
+                foreach ($request->serial as $key=>$v){
+                   $sells= DB::table('sellproducts')->insert(
+                        [
+                            'customer_id' => $id,
+                            'sellsdate' => $date,
+                            'sellsinvoice'=>$invoice,
+                            'productname'=>$request->description[$key],
+                            'productserialno'=>$request->serial[$key],
+                            'productunitprice'=>$request->unitprice[$key],
+                            'productquantity'=>$request->qty[$key],
+                            'productwarrenty'=>$request->warrenty[$key],
+                            'total_amount'=>$request->amount[$key]
+
+                        ]
+                    );
+                }
+                if ($sells){
+                    DB::table('invoicenos')->insert(
+                        ['invoiceno' => $invoice]
+                    );
+
+                    return view('adminPannel.productmanagement.invoice',['products'=>$request],['customer'=>$customer]);
+
+                }
 
 
 
-                return view('adminPannel.productmanagement.invoice',['products'=>$request],['customer'=>$customer]);
+
+
+
 
             }
 }
