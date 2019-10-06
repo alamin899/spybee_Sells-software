@@ -23,7 +23,7 @@ Route::get('/test1', function () {
 //this is when user inter by login
 Route::post('adminlogin','loginController@index')->name('adminlogin');
 
-Route::group(['middleware'=>'check'],function (){
+Route::group(['middleware'=>'check'],function(){
     //======================================================================
      //    this is for dashbord button action
     Route::get('dashbord','loginController@dashbord');
@@ -45,7 +45,8 @@ Route::group(['middleware'=>'check'],function (){
     //update inserted user
     Route::post('update/softwareuser/','usermanagementController@indvidupdate')->name('insertupdate');
     //delete user
-    Route::delete('deleteuser/{id}','usermanagementController@deleteuser')->name('deleteuser');
+//    Route::delete('deleteuser/{id}','usermanagementController@deleteuser')->name('deleteuser');
+    Route::get('deleteuser/{id}','usermanagementController@deleteuser')->name('deleteuser');
     //search customerlist
     Route::post('searchcustomer','usermanagementController@searchcustomer')->name('searchcustomer');
     //search software usere
@@ -71,6 +72,8 @@ Route::group(['middleware'=>'check'],function (){
 
 
     //software user list
+//    yajra data tables
+    Route::get('yajradatatables','usermanagementController@yajradataTables')->name('yajradataTables');
     Route::get('user/list','usermanagementController@userlistview')->name('userlistview');
     Route::get('useralllist','usermanagementController@useralllist')->name('useralllist');
 

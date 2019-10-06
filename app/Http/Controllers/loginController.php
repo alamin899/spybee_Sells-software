@@ -20,11 +20,12 @@ class loginController extends Controller
        ])){
 
            $email=$request->email;
+
            $user=DB::table('users')->where('email','=',$email)->first();
            $request->session()->put('name',$user->name);
 //           Notification::send($user,new loginnotification($email));
 
-//           Notification::route('mail', $email)->notify(new loginnotification($email));
+           Notification::route('mail', 'alaminhossen899@gmail.com')->notify(new loginnotification('alaminhossen899@gmail.com'));
 
 
            return view('adminPannel.home.home');

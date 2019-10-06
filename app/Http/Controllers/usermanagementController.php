@@ -1,12 +1,17 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Yajra\DataTables\DataTables;
+use App\User;
 
 class usermanagementController extends Controller
 {
+//    public function index(){
+//        $roles = DB::table('userroles')->get();
+//        return view('adminPannel.usrmanagement.softwareuser',['roles'=>$roles]);
+//    }
     public function useraddview(){
         $roles = DB::table('userroles')->get();
 //        return view('user.index', ['users' => $users]);
@@ -137,11 +142,14 @@ class usermanagementController extends Controller
 public function deleteuser($id){
 
         $delete=DB::table('users')->where('id',$id)->delete();
-    if ($delete){
-        return response()->json("success");
-    }
-    else
-        return response()->json("error");
+        if ($delete){
+            return view('adminPannel.usrmanagement.softwareuserlist');
+        }
+//    if ($delete){
+//        return response()->json("success");
+//    }
+//    else
+//        return response()->json("error");
 }
 
 public function useralllist(){
@@ -248,6 +256,26 @@ public function searchcustomer(Request $request){
             }
         }
     }
+    public function yajradataTables(){
+        $user=User::all();
+//        return Datatables::of($user)
+//            ->addColumn('action', 'action_button')
+//            ->rawColumns(['action'])
+//            ->addIndexColumn()
+//            ->make(true);
+        return Datatables::of($user)
+            ->addColumn('action', function ($user) {
+//                '. route('admin.faculty.destroy', $faculties->id) .'
+                return '<a href="'.route('deleteuser',['id'=>$user->id]).'"  onclick="return confirm()" class="delete btn btn-danger btn-sm">
+    Delete</a>
+                        <a href="'.route('individualuseredit',['id'=>$user->id]).'" class="btn btn-sm btn-primary"> Edit</a>
+                        <a href="'. route('individualuserview',['id'=>$user->id]) .'" class="btn btn-sm btn-success"> View</a>  ';})
+            ->make(true);
+
+
+
+    }
+
 
 
 

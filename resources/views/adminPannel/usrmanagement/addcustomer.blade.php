@@ -74,7 +74,7 @@
                 var url=form.attr("action");
                 var method=form.attr("method");
                 var data=form.serialize();
-                console.log( url );
+
 
                 $.ajax({
                     url:url,

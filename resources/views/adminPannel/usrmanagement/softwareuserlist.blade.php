@@ -5,75 +5,102 @@
 
 @section('body')
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <div class="card card-primary container">
+    <div class="card card-primary container ">
         <div class="card-header" style="text-align: center;background: #adb7af;color: black;">
             <h2 class="card-title">View User List</h2>
         </div>
+
         <!-- /.card-header -->
         <!-- form start -->
-        <div>
-            <div class="pull-right">
-                <table>
-                    <tr>
-                        <td><label>Search</label></td>
-                        <td><input type="search" onkeyup="search()" class="table table-bordered table-striped  form-group " id="search"></td>
-                    </tr>
+        <div class="col card-body ">
+{{--            <div class="pull-right">--}}
+{{--                <table>--}}
+{{--                    <tr>--}}
+{{--                        <td><label>Search</label></td>--}}
+{{--                        <td><input type="search" onkeyup="search()" class="table table-bordered table-striped  form-group " id="search"></td>--}}
+{{--                    </tr>--}}
 
-                </table>
+{{--                </table>--}}
 
 
-            </div>
-            <table class="table table-bordered table-striped table-responsive-lg generaldata">
+{{--            </div>--}}
+            <table class="table table-bordered table-striped table-responsive-lg generaldata " id="users">
+                <thead>
                 <tr>
-                    <th>Select</th>
+{{--                    <th>Select</th>--}}
                     <th>Name</th>
                     <th>Email</th>
                     <th>Role</th>
                     <th>mobile</th>
                     <th>Id_no</th>
                     <th>Address</th>
+
                     <th>Action</th>
                 </tr>
-                @foreach($users as $user)
-                <tr>
-                    <td><input type="checkbox" name="checkbox" id="checkbox"></td>
-                    <td>{{$user->name}}</td>
-                    <td>{{$user->email}}</td>
-                    <td class="badge bg-primary ">{{$user->role}}</td>
-                    <td>{{$user->phone}}</td>
-                    <td>{{$user->id_no}}</td>
-                    <td>{{$user->address}}</td>
-                    <td>
-                        <a href="{{route('individualuserview',['id'=>$user->id])}}" class="btn btn-success btn-sm">View</a>
-                        <input type="submit" class="deleteuser btn btn-danger btn-sm" data-id="{{$user->id}}" value="delete">
-                        <a href="{{route('individualuseredit',['id'=>$user->id])}}" class="btn btn-primary btn-sm">Edit</a>
-                    </td>
-                </tr>
-                    @endforeach
+                </thead>
+{{--                @foreach($users as $user)--}}
+{{--                <tr>--}}
+{{--                    <td><input type="checkbox" name="checkbox" id="checkbox"></td>--}}
+{{--                    <td>{{$user->name}}</td>--}}
+{{--                    <td>{{$user->email}}</td>--}}
+{{--                    <td class="badge bg-primary ">{{$user->role}}</td>--}}
+{{--                    <td>{{$user->phone}}</td>--}}
+{{--                    <td>{{$user->id_no}}</td>--}}
+{{--                    <td>{{$user->address}}</td>--}}
+{{--                    <td>--}}
+{{--                        <a href="{{route('individualuserview',['id'=>$user->id])}}" class="btn btn-success btn-sm">View</a>--}}
+{{--                        <input type="submit" class="deleteuser btn btn-danger btn-sm" data-id="{{$user->id}}" value="delete">--}}
+{{--                        <a href="{{route('individualuseredit',['id'=>$user->id])}}" class="btn btn-primary btn-sm">Edit</a>--}}
+{{--                    </td>--}}
+{{--                </tr>--}}
+{{--                    @endforeach--}}
             </table>
 
             {{--            for searches value--}}
 
-            <table class="table table-bordered table-striped table-responsive-lg ajaxdata"  style="display: none" >
-                <tr>
+{{--            <table class="table table-bordered table-striped table-responsive-lg ajaxdata"  style="display: none" >--}}
+{{--                <tr>--}}
 
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Role</th>
-                    <th>Mobile</th>
-                    <th>Id_No</th>
-                    <th>Address</th>
-                    <th>Action</th>
-                </tr>
+{{--                    <th>Name</th>--}}
+{{--                    <th>Email</th>--}}
+{{--                    <th>Role</th>--}}
+{{--                    <th>Mobile</th>--}}
+{{--                    <th>Id_No</th>--}}
+{{--                    <th>Address</th>--}}
+{{--                    <th>Action</th>--}}
+{{--                </tr>--}}
 
-                <tbody id="searchable">
+{{--                <tbody id="searchable">--}}
 
 
-                </tbody>
+{{--                </tbody>--}}
 
-            </table>
+{{--            </table>--}}
         </div>
     </div>
+
+    <script>
+        $(function() {
+            $('#users').DataTable({
+                processing: true,
+                serverSide: true,
+                ajax: '{!! route('yajradataTables') !!}',
+                columns: [
+                    { data: 'name', name: 'name' },
+                    { data: 'email', name: 'email' },
+                    { data: 'role', name: 'role' },
+                    { data: 'phone', name: 'phone' },
+                    { data: 'id_no', name: 'id_no' },
+                    { data: 'address', name: 'address' },
+                    {data: 'action', name: 'action'}
+                    // ['id'=>$user->id]
+
+
+
+                ]
+            });
+        });
+    </script>
 
     <script>
         $(".deleteuser").click(function () {
@@ -118,36 +145,36 @@
     </script>
 
     {{--    Search--}}
-    <script type="text/javascript">
-        function search() {
-            var search=$('#search').val();
-            if (search){
-                $(".generaldata").hide();
-                $(".ajaxdata").show();
-            }
-            else {
-                $(".generaldata").show();
-                $(".ajaxdata").hide();
-            }
-            console.log(search);
+{{--    <script type="text/javascript">--}}
+{{--        function search() {--}}
+{{--            var search=$('#search').val();--}}
+{{--            if (search){--}}
+{{--                $(".generaldata").hide();--}}
+{{--                $(".ajaxdata").show();--}}
+{{--            }--}}
+{{--            else {--}}
+{{--                $(".generaldata").show();--}}
+{{--                $(".ajaxdata").hide();--}}
+{{--            }--}}
+{{--            console.log(search);--}}
 
 
-            $.ajax({
-                url:"{{route('searchuser')}}",
-                type:"POST",
-                data:{search:search,_token:'{{csrf_token()}}'},
-                dataType:"html",
-                success:function (data) {
-                    console.log(data);
-                    $("#searchable").html(data);
-                },
-                error:function (error) {
-                    swal("OOpps","inserted not success","error");
-                }
+{{--            $.ajax({--}}
+{{--                url:"{{route('searchuser')}}",--}}
+{{--                type:"POST",--}}
+{{--                data:{search:search,_token:'{{csrf_token()}}'},--}}
+{{--                dataType:"html",--}}
+{{--                success:function (data) {--}}
+{{--                    console.log(data);--}}
+{{--                    $("#searchable").html(data);--}}
+{{--                },--}}
+{{--                error:function (error) {--}}
+{{--                    swal("OOpps","inserted not success","error");--}}
+{{--                }--}}
 
 
-            })
-        }
-    </script>
+{{--            })--}}
+{{--        }--}}
+{{--    </script>--}}
     {{--    End Search--}}
 @endsection()
