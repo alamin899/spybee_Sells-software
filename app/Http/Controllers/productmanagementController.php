@@ -40,7 +40,7 @@ class productmanagementController extends Controller
                 $invoice=$request->sellsno;
 
                 $customer=DB::table('customers')->where('id',$id)->first();
-                foreach ($request->serial as $key=>$v){
+                foreach ($request->serial as $key=>$v){ //serial is not mendatory you can give other field
                    $sells= DB::table('sellproducts')->insert(
                         [
                             'customer_id' => $id,
