@@ -102,6 +102,7 @@ Route::group(['middleware'=>'check'],function(){
     //    product sells
     Route::post('sellsproduct','productmanagementController@sellsproduct')->name('sellsproduct');
     //this is for when user already login and want to dashbord by url
+    Route::post('admin/addproduct','productmanagementController@addproduct')->name('addproduct');
 
     Route::get('admin/addproductview','productmanagementController@addproductview')->name('addproductview');
 

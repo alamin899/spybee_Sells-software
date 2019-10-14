@@ -24,7 +24,9 @@
                     </select>
 
                 </div>
-                <div class="col-md-5"></div>
+                <div class="col-md-5">
+                    <div class="pull-left "><button class="form-control">Quick Add Customer</button></div>
+                </div>
                 <div class="col-md-5">
                     <div class="row">
                         <div class="col form-control">

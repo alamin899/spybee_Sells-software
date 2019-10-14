@@ -10,7 +10,8 @@
         </div>
         <!-- /.card-header -->
         <!-- form start -->
-        <form role="form" class="form-control">
+        <form role="form" class="form-control" id="productadd" action="{{route('addproduct')}}" method="post">
+           {{csrf_field()}}
             <div class="row">
                 <div class="col">
                     <label>Product Dislplay Name</label>
@@ -36,7 +37,7 @@
                 </div>
                 <div class="col">
                     <label>Product Warrenty</label>
-                    <select name="warrenty" class="form-control">
+                    <select name="pwarrenty" class="form-control">
                         <option value="0">Select Warrenty:</option>
                         <option value="6">6 month</option>
                         <option value="12">12 Month</option>
@@ -68,6 +69,10 @@
                 <div class="col">
                     <label>Image</label>
                     <input type="file" class="form-control" name="profileimage">
+                </div>
+                <div class="col">
+                    <label>Quantity</label>
+                    <input type="number" class="form-control" name="quantity">
                 </div>
                 <div class="col">
                     <label>Vendor</label>
@@ -103,5 +108,39 @@
             </div>
         </form>
     </div>
+
+    <script>
+        $(function () {
+            $("#productadd").on("submit",function (e) {
+                e.preventDefault();
+                var form=$(this);
+                var url=form.attr("action");
+                var method=form.attr("method");
+                var data=form.serialize();
+
+
+                $.ajax({
+                    url:url,
+                    data:data,
+                    type:"POST",
+                    dataType:"JSON",
+                    success:function (data) {
+                        if (data=="success"){
+                            swal("Great","successfully inserted","success");
+                            document.getElementById("productadd").reset();
+                        }
+                        else {
+                            swal("OOpps","inserted not success","error");
+                        }
+                    },
+                    error:function (error) {
+                        swal("OOpps","inserted not success","error");
+                    }
+
+
+                })
+            })
+        })
+    </script>
 @endsection()
 

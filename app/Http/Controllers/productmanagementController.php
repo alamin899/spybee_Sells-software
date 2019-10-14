@@ -93,4 +93,29 @@ class productmanagementController extends Controller
 
 
             }
+            public function addproduct(Request $request){
+                     $insert=DB::table('products')->insert(
+                         [
+                             'pdisplayname'=>$request->pdisplayname,
+                             'pname'=>$request->pname,
+                             'pserialno'=>$request->pserialno,
+                             'pbrand'=>$request->pbrand,
+                             'pmodel'=>$request->pmodel,
+                             'pwarrenty'=>$request->pwarrenty,
+                             'pbuydate'=>$request->pbuydate,
+                             'pbuyprice'=>$request->pbuyprice,
+                             'psellprice'=>$request->psellprice,
+                             'profileimage'=>$request->profileimage,
+                             'quantity'=>$request->quantity,
+                             'vendor'=>$request->vendor,
+                             'pshortdesc'=>$request->pshortdesc,
+                             'pfulldesc'=>$request->pfulldesc,
+                         ]
+                     );
+                if ($insert){
+                    return response()->json("success");
+                }
+                else
+                    return response()->json("error");
+            }
 }
