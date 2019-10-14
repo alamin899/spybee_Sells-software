@@ -70,9 +70,10 @@
 
             <div class="container tbody table table-bordered table-striped">
                 <div class="row col-md-12 ">
-                    <div class="col-md-1"><label>SL</label></div>
+{{--                    <div class="col-md-1"><label>SL</label></div>--}}
+                    <div class="col-md-2"><label>Product</label></div>
                     <div class="col-md-2"><label>Desc.</label></div>
-                    <div class="col-md-3"><label>Serial</label></div>
+                    <div class="col-md-2"><label>Serial</label></div>
                     <div class="col-md-1"><label>Qty</label></div>
                     <div class="col-md-1"><label>Unit Price</label></div>
                     <div class="col-md-2"><label>Warrenty</label></div>
@@ -82,10 +83,17 @@
                 <div>
 
                     <div class="row col-md-12 ">
-                        <div class="col-md-1">1</div>
-                        <div class="col-md-2"><textarea name="description[]"  class="form-control"></textarea></div>
-                        <div class="col-md-3"><textarea name="serial[]" class="form-control" ></textarea></div>  {{--data-role="tagsinput"--}}
-                        <div class="col-md-1"><input type="number" name="qty[]"  class="quantity form-control" value="1" ></div>
+{{--                        <div class="col-md-1">1</div>--}}
+                        <div class="col-md-2">
+                            <select class="form-control">
+                                <option>select Product</option>
+                                <option>product1</option>
+                                <option>product2</option>
+                            </select>
+                        </div>
+                        <div class="col-md-2"><textarea name="description[]"  class="form-control" rows="1"></textarea></div>
+                        <div class="col-md-2"><textarea name="serial[]" class="form-control" rows="1"></textarea></div>  {{--data-role="tagsinput"--}}
+                        <div class="col-md-1"><input type="text" name="qty[]"  class="quantity form-control" value="1" ></div>
                         <div class="col-md-1"><input type="text" name="unitprice[]"  class="form-control unitprice"></div>
                         <div class="col-md-2"> <input type="text" name="warrenty[]" class="form-control"></div>
                         <div class="col-md-1"> <input type="text" name="amount[]"  class="form-control total" ></div>
@@ -158,10 +166,11 @@ document.getElementById("totalamount").value=total;
             count++;
 
             var row='<div class="row col-md-12 ">' +
-                '<div class="col-md-1">'+count+'</div>' +
-                '<div class="col-md-2"><textarea name="description[]"  class="form-control"></textarea></div>' +
-                '<div class="col-md-3"><textarea name="serial[]" class="form-control" ></textarea></div> ' +
-                '<div class="col-md-1"><input type="number" name="qty[]"  class="quantity form-control" value="1" ></div>' +
+                // '<div class="col-md-1">'+count+'</div>' +
+                '<div class="col-md-2"><select class="form-control"><option>select Product</option><option>product1</option><option>product2</option></select></div>'+
+                '<div class="col-md-2"><textarea name="description[]"  class="form-control" rows="1"></textarea></div>' +
+                '<div class="col-md-2"><textarea name="serial[]" class="form-control" rows="1"></textarea></div> ' +
+                '<div class="col-md-1"><input type="text" name="qty[]"  class="quantity form-control" value="1" ></div>' +
                 '<div class="col-md-1"><input  type="text" name="unitprice[]"  class="form-control unitprice"></div>' +
                 '<div class="col-md-2"> <input type="text" name="warrenty[]" class="form-control"></div>' +
                 '<div class="col-md-1"> <input type="text" name="amount[]"  class="form-control total" ></div>' +
@@ -214,14 +223,14 @@ document.getElementById("totalamount").value=total;
 
     <script type="text/javascript">
        $(document).ready(function () {
-          $('#selldropdown').select2();
+          $("#selldropdown").select2();
        });
 
 
     </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/bootstrap.tagsinput/0.8.0/bootstrap-tagsinput.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+{{--    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>--}}
+{{--    <script src="https://cdn.jsdelivr.net/bootstrap.tagsinput/0.8.0/bootstrap-tagsinput.min.js"></script>--}}
+{{--    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>--}}
 
 @endsection()
 
