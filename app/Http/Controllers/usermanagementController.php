@@ -257,7 +257,9 @@ public function searchcustomer(Request $request){
         }
     }
     public function yajradataTables(){
+        $message="are you sure to delete?";
         $user=User::all();
+
 //        return Datatables::of($user)
 //            ->addColumn('action', 'action_button')
 //            ->rawColumns(['action'])
@@ -266,8 +268,10 @@ public function searchcustomer(Request $request){
         return Datatables::of($user)
             ->addColumn('action', function ($user) {
 //                '. route('admin.faculty.destroy', $faculties->id) .'
-                return '<a href="'.route('deleteuser',['id'=>$user->id]).'"  onclick="return confirm()" class="delete btn btn-danger btn-sm">
-    Delete</a>
+//                <a href="'.route('deleteuser',['id'=>$user->id]).'" onclick="return confirm();"  class="delete btn btn-danger btn-sm">
+//                Dele</a>
+                return  '<a href="'.route('deleteuser',['id'=>$user->id]).'" onclick="return confirm();"  class="delete btn btn-danger btn-sm">
+                Dele</a>
                         <a href="'.route('individualuseredit',['id'=>$user->id]).'" class="btn btn-sm btn-primary"> Edit</a>
                         <a href="'. route('individualuserview',['id'=>$user->id]) .'" class="btn btn-sm btn-success"> View</a>  ';})
             ->make(true);
@@ -275,6 +279,8 @@ public function searchcustomer(Request $request){
 
 
     }
+
+
 
 
 

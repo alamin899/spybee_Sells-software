@@ -41,25 +41,30 @@
 
             </div>
             <hr>
-            <div class="row">
-                <div class="col-md-3">
-                    <div class="card card-primary">
-                        <div class="card-header" style="background: #191b19;">
-                            <h2 class="card-title">Customer Address</h2>
-                        </div>
-                        <div id="customeraddress">
-                            <textarea class="form-control"  >
+{{--            <div class="row">--}}
+{{--                <div class="col-md-3">--}}
+{{--                    <div class="card card-primary">--}}
+{{--                        <div class="card-header" style="background: #191b19;">--}}
+{{--                            <h2 class="card-title">Customer Address</h2>--}}
+{{--                        </div>--}}
+{{--                        <div id="customeraddress">--}}
+{{--                            <textarea class="form-control"  >--}}
 
-                            </textarea>
-                        </div>
+{{--                            </textarea>--}}
+{{--                        </div>--}}
 
-                    </div>
-                </div>
-                <div class="col-md-6"></div>
-                <div class="col-md-3"></div>
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--                <div class="col-md-6"></div>--}}
+{{--                <div class="col-md-3"></div>--}}
+
+{{--            </div>--}}
+
+            <div class="form-row" id="customeraddress">
+
 
             </div>
-            <hr>
+
 {{--    sells table        https://paste.ubuntu.com/p/s8YRhxRz3W/--}}
 
 
@@ -112,8 +117,8 @@
             </div>
         </form>
     </div>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+
+
 
 
 {{--    calculation of unit price and quantity and finally show total total amount--}}
@@ -205,16 +210,18 @@ document.getElementById("totalamount").value=total;
 
     </script>
 
-    {{--dropdown searchable--}}
+    dropdown searchable
 
-{{--    <script type="text/javascript">--}}
-{{--        $("#selldropdown").select2({--}}
+    <script type="text/javascript">
+       $(document).ready(function () {
+          $('#selldropdown').select2();
+       });
 
-{{--        })--}}
 
-
-{{--    </script>--}}
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
     <script src="https://cdn.jsdelivr.net/bootstrap.tagsinput/0.8.0/bootstrap-tagsinput.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 @endsection()
 

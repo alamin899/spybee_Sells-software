@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Notifications\loginnotification;
+use Illuminate\Support\Facades\Input;
 use Notification;
 use App\User;
 use Illuminate\Http\Request;
@@ -23,10 +24,13 @@ class loginController extends Controller
 
            $user=DB::table('users')->where('email','=',$email)->first();
            $request->session()->put('name',$user->name);
+           $remember=Input::get('remember');
 //           Notification::send($user,new loginnotification($email));
 
-           Notification::route('mail', 'alaminhossen899@gmail.com')->notify(new loginnotification('alaminhossen899@gmail.com'));
-
+//           Notification::route('mail', 'alaminhossen899@gmail.com')->notify(new loginnotification('alaminhossen899@gmail.com'));
+//             if (!empty($remember)){
+//                 Auth::login(Auth::user()->id,true);
+//             }
 
            return view('adminPannel.home.home');
 
@@ -50,6 +54,15 @@ public function submit(Request $request)
 //if ($data){
 //    echo "success";
 //}
+}
+
+public function test(){
+       $user=DB::table('sellproducts')
+           ->join('customers','customers.id','=','sellproducts.customer_id')
+//           ->select('customers.customername')
+           ->groupBy('sellproducts.customer_id')
+           ->get();
+       return $user;
 }
 
 }

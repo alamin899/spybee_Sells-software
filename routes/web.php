@@ -146,5 +146,6 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('test','loginController@indexs')->name('test');
-Route::post('testing','loginController@submit')->name('submitmultiple');
+//Route::get('test','loginController@indexs')->name('test');
+//Route::post('testing','loginController@submit')->name('submitmultiple');
+Route::get('test','loginController@test')->name('test');
