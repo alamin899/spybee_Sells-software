@@ -15,6 +15,7 @@
 {{--<link rel="stylesheet" href="{{asset('admin/profile/profile.css')}}">--}}
 {{--End Admin profile css link--}}
 <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" />
     <link rel="stylesheet" href="{{asset('admin/adminlte/plugins/')}}/font-awesome/css/font-awesome.min.css">
     <!-- Ionicons -->
     <link rel="stylesheet" href="{{asset('admin/adminlte/')}}/code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
@@ -154,7 +155,7 @@
 <script src="{{asset('validation.js')}}"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha256-KsRuvuRtUVvobe66OFtOQfjP8WA2SzYsmm4VPfMnxms=" crossorigin="anonymous"></script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
 
 </body>
 

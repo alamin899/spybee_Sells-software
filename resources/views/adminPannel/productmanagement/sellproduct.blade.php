@@ -4,7 +4,7 @@
 @endsection()
 
 @section('body')
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
+
     <div class="card card-primary container">
         <div class="card-header" style="text-align: center;background: #adb7af;color: black;">
             <h2 class="card-title">Sells product </h2>
@@ -85,7 +85,7 @@
                     <div class="row col-md-12 ">
 {{--                        <div class="col-md-1">1</div>--}}
                         <div class="col-md-2">
-                            <select class="form-control">
+                            <select class="form-control" id="product">
                                 <option>select Product</option>
                                 <option>product1</option>
                                 <option>product2</option>
@@ -219,11 +219,14 @@ document.getElementById("totalamount").value=total;
 
     </script>
 
-    dropdown searchable
+{{--    dropdown searchable--}}
 
     <script type="text/javascript">
        $(document).ready(function () {
           $("#selldropdown").select2();
+       });
+       $(document).ready(function () {
+           $("#product").select2();
        });
 
 
