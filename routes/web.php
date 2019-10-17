@@ -94,6 +94,8 @@ Route::group(['middleware'=>'check'],function(){
     //======================================================================
     //    after select user show text area of custer information
     Route::get('customerinfo/{id}','productmanagementController@customerinfo')->name('customerinfo');
+
+    Route::post('productinfo','productmanagementController@productinfo')->name('productinfo');
     Route::post('email_available','vendormanagementController@email_available')->name('email_available');
     //Phone number availability check
     Route::post('phone_available','vendormanagementController@phone_available')->name('phone_available');

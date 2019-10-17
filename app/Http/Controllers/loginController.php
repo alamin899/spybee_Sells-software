@@ -57,11 +57,12 @@ public function submit(Request $request)
 }
 
 public function test(){
-       $user=DB::table('sellproducts')
-           ->join('customers','customers.id','=','sellproducts.customer_id')
-//           ->select('customers.customername')
-           ->groupBy('sellproducts.customer_id')
-           ->get();
+//       $user=DB::table('sellproducts')
+//           ->join('customers','customers.id','=','sellproducts.customer_id')
+////           ->select('customers.customername')
+//           ->groupBy('sellproducts.customer_id')
+//           ->get();
+
        return $user;
 }
 

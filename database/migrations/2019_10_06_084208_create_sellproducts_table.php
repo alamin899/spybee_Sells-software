@@ -16,6 +16,7 @@ class CreateSellproductsTable extends Migration
         Schema::create('sellproducts', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('customer_id')->unsigned();
+            $table->integer('productid')->unsigned();
             $table->date('sellsdate');
             $table->string('sellsinvoice');
             $table->string('productname');
@@ -26,6 +27,7 @@ class CreateSellproductsTable extends Migration
             $table->float('total_amount');
             $table->timestamps();
             $table->foreign('customer_id')->references('id')->on('customers');
+
         });
     }
 
