@@ -63,7 +63,10 @@ public function test(){
 //           ->groupBy('sellproducts.customer_id')
 //           ->get();
 
-       return $user;
+//       return $user;
 }
+//public function testing(Request $request){
+//    echo $request->customername;
+//}
 
 }

@@ -36,22 +36,24 @@ class productmanagementController extends Controller
 //                     $customer->customeraddress;<input type="text" class="form-control" >  <input type="text" class="form-control" value="fd">
                 echo '<div class="form-group col-md-3">
               <label for="inputCity">Customer name</label>
-              <label class="form-control">'.$customer->customername.'</label>
+              <input type="text" class="form-control" name="customername" value="'.$customer->customername.'" readonly>
+            
             </div>
             
             <div class="form-group col-md-3">
               <label for="inputCity">Customer Email</label>
-              <label class="form-control">'.$customer->customeremail.'</label>
+              <input type="text" class="form-control" name="customeremail" value="'.$customer->customeremail.'" readonly>
+              
             </div>
             
             <div class="form-group col-md-3">
               <label for="inputCity">Customer Phone</label>
-              <label class="form-control">'.$customer->phone.'</label>
+            <input type="text" class="form-control" name="phone" value="'.$customer->phone.'" readonly>
             </div>
             
             <div class="form-group col-md-3">
               <label for="inputCity">Customer Address</label>
-              <label class="form-control">'.$customer->customeraddress.'</label>
+              <input type="text" class="form-control" name="customeraddress" value="'.$customer->customeraddress.'" readonly>
             </div>';
             }
 
@@ -68,40 +70,40 @@ class productmanagementController extends Controller
             public function sellsproduct(Request $request){
 
 
-                $id=$request->customer;
-                $date=$request->selldate;
-                $invoice=$request->sellsno;
-
-//                $product=$request->product;
+//                $id=$request->customer;
+//                $date=$request->selldate;
+//                $invoice=$request->sellsno;
 //
-//                $productlist=DB::table('products')->where('id',$product)->first();
-
-
-                $customer=DB::table('customers')->where('id',$id)->first();
-                foreach ($request->serial as $key=>$v){ //serial is not mendatory you can give other field
-                   $sells= DB::table('sellproducts')->insert(
-                        [
-                            'customer_id' => $id,
-                            'sellsdate' => $date,
-                            'sellsinvoice'=>$invoice,
-                            'productname'=>$request->description[$key],
-                            'productserialno'=>$request->serial[$key],
-                            'productunitprice'=>$request->unitprice[$key],
-                            'productquantity'=>$request->qty[$key],
-                            'productwarrenty'=>$request->warrenty[$key],
-                            'total_amount'=>$request->amount[$key]
-
-                        ]
-                    );
-                }
-                if ($sells){
-                    DB::table('invoicenos')->insert(
-                        ['invoiceno' => $invoice]
-                    );
-
-                    return view('adminPannel.productmanagement.invoice',['products'=>$request],['customer'=>$customer]);
-
-                }
+////                $product=$request->product;
+////
+////                $productlist=DB::table('products')->where('id',$product)->first();
+//
+//
+//                $customer=DB::table('customers')->where('id',$id)->first();
+//                foreach ($request->serial as $key=>$v){ //serial is not mendatory you can give other field
+//                   $sells= DB::table('sellproducts')->insert(
+//                        [
+//                            'customer_id' => $id,
+//                            'sellsdate' => $date,
+//                            'sellsinvoice'=>$invoice,
+//                            'productname'=>$request->description[$key],
+//                            'productserialno'=>$request->serial[$key],
+//                            'productunitprice'=>$request->unitprice[$key],
+//                            'productquantity'=>$request->qty[$key],
+//                            'productwarrenty'=>$request->warrenty[$key],
+//                            'total_amount'=>$request->amount[$key]
+//
+//                        ]
+//                    );
+//                }
+//                if ($sells){
+//                    DB::table('invoicenos')->insert(
+//                        ['invoiceno' => $invoice]
+//                    );
+//
+//                    return view('adminPannel.productmanagement.invoice',['products'=>$request],['customer'=>$customer]);
+//
+//                }
 
 
 
@@ -134,5 +136,19 @@ class productmanagementController extends Controller
                 }
                 else
                     return response()->json("error");
+            }
+
+            public function  productdropdown($id){
+
+                $product=DB::table('products')->where('id',$id)->first();
+
+                echo '<div class="col"><textarea type="text" id="productname" name="pname" class="form-control" placeholder="Product name" rows="2">'.$product->pname.'</textarea></div>
+                <div class="col"><textarea type="text" id="description" name="pshortdesc" class="form-control" placeholder="description" rows="2">'.$product->pshortdesc.'</textarea></div>
+                <div class="col"><textarea type="text" id="serial" name="pserialno" class="form-control" placeholder="serial" rows="2"></textarea></div>
+                <div class="col"><input type="text"    id="quantity" name="quantity"  class="form-control" placeholder="quantity"></div>
+                <div class="col"><input type="text"    id="warrenty" name="pwarrenty" class="form-control" placeholder="warrenty" value="'.$product->pwarrenty.'"></div>
+                <div class="col"><input type="text"    id="unitprice" name="psellprice"  class="form-control" placeholder="unit price" value="'.$product->psellprice.'"></div>
+                <div class="col"><input type="text"    id="totalprice" name="totalprice"  class="form-control" placeholder="totalprice" ></div>';
+
             }
 }

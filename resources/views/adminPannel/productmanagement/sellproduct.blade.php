@@ -12,20 +12,28 @@
         </div>
         <!-- /.card-header -->
         <!-- form start -->
+
+        {{--testing--}}
         <form role="form" action="{{route('sellsproduct')}}" method="post" class="form-control">
             {{csrf_field()}}
             <div class="row">
-                <div class="col-md-2 form-control">
-                    <label>Customer</label>
-                    <select class="form-control customer"  name="customer" id="selldropdown">
-                        <option value="0">--select--</option>
+                <div class="col-md-3 ">
+
+                    <select class="form-control customer"  name="customer" id="customerdropdown">
+                        <option value="0">--select Customer--</option>
                         @foreach($customers as $customer)
                             <option  value="{{$customer->id}}">{{$customer->customername}} {{$customer->phone}}</option>
                         @endforeach
                     </select>
 
                 </div>
-                <div class="col-md-5">
+                <div class="col-md-4">
+                    <select name="product" id="product" class="form-group form-control">
+                            <option>--select product--</option>
+                            @foreach($products as $product)
+                                <option  value="{{$product->id}}">{{$product->pname}}</option>
+                            @endforeach
+                        </select>
 
                 </div>
                 <div class="col-md-5">
@@ -50,19 +58,15 @@
 
             </div>
             <div class="row">
-                <div class="col"><select name="product" id="product" class="form-group form-control">
-                        <option>--select product--</option>
-                        @foreach($products as $product)
-                            <option  value="{{$product->pname}}">{{$product->pname}}</option>
-                        @endforeach
-                    </select></div>
-                <div class="col"><textarea type="text" id="description" name="description" class="form-control" placeholder="description" rows="1"></textarea></div>
-                <div class="col"><textarea type="text" id="serial" name="serial" class="form-control" placeholder="serial" rows="1"></textarea></div>
-                <div class="col"><input type="text"    id="quantity" name="quantity"  class="form-control" placeholder="quantity"></div>
-                <div class="col"><input type="text"    id="warrenty" name="warrenty" class="form-control" placeholder="warrenty"></div>
-                <div class="col"><input type="text"    id="unitprice" name="unitprice"  class="form-control" placeholder="unit price"></div>
-                <div class="col"><input type="text"    id="totalprice" name="totalprice"  class="form-control" placeholder="totalprice" ></div>
-                <div class="col"><input type="" class="form-control btn btn-default" value="Add" id="addproduct"></div>
+                <div class="col-md-11">
+                    <div class="row" id="productlist">
+
+                    </div>
+                </div>
+                <div class="col-md-1">
+                    <div class="row"><div class="col"><input type="" class="form-control btn btn-default" value="Add" id="addproduct"></div></div>
+                </div>
+
             </div>
             <br>
             <div class="row">
@@ -114,7 +118,7 @@
                 $('#totalprice').val(total)
             });
             $('#addproduct').click(function () {
-                var productname=$('#product').val();
+                var productname=$('#productname').val();
                 var description=$('#description').val();
                 var serial=$('#serial').val();
                 var quantity=$('#quantity').val();
@@ -133,7 +137,26 @@
                     '<td>'+totalprice+'</td>'+
                     '</tr>'
                 );
+
             });
+            // product dropdown
+            $('#product').change(function () {
+                var token = $("meta[name='csrf-token']").attr("content");
+                var product=$(this).val();
+                $.ajax({
+                    url:"{{url('productdropdown')}}" + '/' +product,
+                    type:"get",
+                    dataType:"html",
+                    data:{"id":product,"_token":token},
+                    success:function (data) {
+                        $("#productlist").html(data);
+                    },
+                    error:function (data) {
+                        swal("OOpps","no something is wrong","error");
+                    }
+                })
+            });
+
         });
     </script>
 
@@ -157,54 +180,10 @@
             document.getElementById("totalamount").value=total;
         }
     </script>
-    {{--  End  calculation of unit price and quantity and finally show total total amount--}}
 
-
-    {{--add multiple row--}}
-    {{--<script>--}}
-    {{--var count=1;--}}
-    {{--$('.addrow').on('click',function () {--}}
-
-    {{--addrow();--}}
-    {{--});--}}
-    {{--function addrow() {--}}
-    {{--count++;--}}
-
-    {{--var row='<div class="row col-md-12 ">' +--}}
-    {{--// '<div class="col-md-1">'+count+'</div>' +--}}
-    {{--'<div class="col-md-2"><select class="form-control"><option>select Product</option><option>product1</option><option>product2</option></select></div>'+--}}
-    {{--'<div class="col-md-2"><textarea name="description[]"  class="form-control" rows="1"></textarea></div>' +--}}
-    {{--'<div class="col-md-2"><textarea name="serial[]" class="form-control" rows="1"></textarea></div> ' +--}}
-    {{--'<div class="col-md-1"><input type="text" name="qty[]"  class="quantity form-control" value="1" ></div>' +--}}
-    {{--'<div class="col-md-1"><input  type="text" name="unitprice[]"  class="form-control unitprice"></div>' +--}}
-    {{--'<div class="col-md-2"> <input type="text" name="warrenty[]" class="form-control"></div>' +--}}
-    {{--'<div class="col-md-1"> <input type="text" name="amount[]"  class="form-control total" ></div>' +--}}
-    {{--'<div class="col-md-1"><input type="button" class="name btn btn-danger" value="-"> </div>' +--}}
-
-    {{--'</div>'+--}}
-    {{--'<hr>';--}}
-
-
-    {{--$('.tbody').append(row);--}}
-    {{--// remove row--}}
-    {{--$('.name').on('click',function () {--}}
-    {{--$(this).parent().parent().remove();--}}
-    {{--count--;--}}
-    {{--totalamount();--}}
-    {{--})--}}
-
-    {{--};--}}
-
-
-    {{--</script>--}}
-
-    {{--End add multiple row--}}
-
-
-    {{--    after select user show text area of custer information--}}
     <script>
         $(document).ready(function () {
-            $('#selldropdown').change(function () {
+            $('#customerdropdown').change(function () {
                 var token = $("meta[name='csrf-token']").attr("content");
                 var customer=$(this).val();
                 $.ajax({
@@ -227,7 +206,7 @@
 
     <script type="text/javascript">
         $(document).ready(function () {
-            $("#selldropdown").select2();
+            $("#customerdropdown").select2();
         });
         $(document).ready(function () {
             $("#product").select2();

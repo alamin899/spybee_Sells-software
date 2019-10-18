@@ -94,6 +94,7 @@ Route::group(['middleware'=>'check'],function(){
     //======================================================================
     //    after select user show text area of custer information
     Route::get('customerinfo/{id}','productmanagementController@customerinfo')->name('customerinfo');
+   Route::get('productdropdown/{id}','productmanagementController@productdropdown')->name('productdropdown');
 
     Route::post('productinfo','productmanagementController@productinfo')->name('productinfo');
     Route::post('email_available','vendormanagementController@email_available')->name('email_available');
@@ -150,5 +151,5 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 //Route::get('test','loginController@indexs')->name('test');
-//Route::post('testing','loginController@submit')->name('submitmultiple');
+//Route::post('testing','loginController@testing')->name('testing');
 Route::get('test','loginController@test')->name('test');
