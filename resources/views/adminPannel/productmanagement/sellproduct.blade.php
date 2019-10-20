@@ -94,17 +94,18 @@
                 <div class="pull-right" style="padding-right: 35px;" >
                     <label>Total Amount:</label>
                     <label class="totalamount"></label>
-                    <input type="hidden" name="totalamount" id="totalamount">
+                    <input type="hidden" name="totalamount" id="totalamount" value="3400">
                 </div>
                 <br>
 
             </div>
 
-        </form>
+
             <div class="card-footer">
-                                <a href="{{route('test')}}"  class="btn btn-success btn-block sellsbutton" >Sells</a>
-                {{--<button class="btn btn-success btn-block" id="sellsallproduct">Sells</button>--}}
+{{--                                <a href="{{route('test')}}"  class="btn btn-success btn-block sellsbutton" >Sells</a>--}}
+                <button class="btn btn-success btn-block" id="sellsallproduct">Sells</button>
             </div>
+        </form>
 
     </div>
 
@@ -194,31 +195,6 @@
 
             // submit all data in database
 
-            $("#sellsallproduct").click(function () {
-               var data_array=[];
-               $('.data_table tbody tr').each(function (row,tr) {
-                   if ($(tr).find('td:eq(0)').text()==""){
-
-                   }
-                   else
-                    var sub={
-                       // 'customer':$(tr).find('td:eq(0)').text(),
-                       // 'productid':$(tr).find('td:eq(1)').text(),
-                       // 'sellsno':$(tr).find('td:eq(2)').text(),
-                       // 'selldate':$(tr).find('td:eq(3)').text(),
-                       'productname':$(tr).find('td:eq(8)').text(),
-                       'description':$(tr).find('td:eq(9)').text(),
-                       'serial':$(tr).find('td:eq(10)').text(),
-                       'unitprice':$(tr).find('td:eq(11)').text(),
-                       'quantity':$(tr).find('td:eq(12)').text(),
-                       'warrenty':$(tr).find('td:eq(13)').text(),
-                       'totalprice':$(tr).find('td:eq(14)').text()
-                   };
-
-
-               });
-
-            });
 
         });
     </script>

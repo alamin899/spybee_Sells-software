@@ -78,6 +78,7 @@
                         <thead>
                         <tr>
                             <th>SL</th>
+                            <th>Product</th>
                             <th>Desc</th>
                             <th>Serial#</th>
                             <th>Qty</th>
@@ -88,42 +89,23 @@
                         </thead>
                         <tbody>
 
-                        @foreach($products->serial as $key=>$product)
+                        @foreach($products->pserial as $key=>$product)
 
 
                         <tr>
                             <td>{{$key+1}}</td>
-                            <td>{{$products->description[$key]}}</td>
-                            <td>{{$products->serial[$key]}}</td>
-                            <td>{{$products->qty[$key]}}</td>
-                            <td>{{$products->unitprice[$key]}}</td>
-                            <td>{{$products->warrenty[$key]}}</td>
-                            <td>{{$products->amount[$key]}}</td>
+                            <td>{{$products->pname[$key]}}</td>
+                            <td>{{$products->pdesc[$key]}}</td>
+                            <td>{{$products->pserial[$key]}}</td>
+                            <td>{{$products->pquantity[$key]}}</td>
+                            <td>{{$products->punitprice[$key]}}</td>
+                            <td>{{$products->pwarrenty[$key]}}</td>
+                            <td>{{$products->ptotalprice[$key]}}</td>
 
                         </tr>
                         @endforeach
 
-{{--                        <tr>--}}
-{{--                            <td>2</td>--}}
-{{--                            <td>Hard disk sata toshiba 1 tb</td>--}}
-{{--                            <td>766x588FREDS56</td>--}}
-{{--                            <td>1</td>--}}
-{{--                            <td>3700</td>--}}
-{{--                            <td>1 YEAR</td>--}}
-{{--                            <td>3700</td>--}}
-
-{{--                        </tr>--}}
-
-{{--                        <tr>--}}
-{{--                            <td>3</td>--}}
-{{--                            <td>Hard disk sata toshiba 1 tb</td>--}}
-{{--                            <td>766x588FREDS56</td>--}}
-{{--                            <td>1</td>--}}
-{{--                            <td>3700</td>--}}
-{{--                            <td>1 YEAR</td>--}}
-{{--                            <td>3700</td>--}}
-
-{{--                        </tr>--}}
+{{--
 
                         </tbody>
                     </table>
