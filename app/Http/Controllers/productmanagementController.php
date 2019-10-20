@@ -68,6 +68,14 @@ class productmanagementController extends Controller
             }
 
             public function sellsproduct(Request $request){
+        $invoice=$request->sellsno;
+                $insert=DB::table('invoicenos')->insert(
+                        ['invoiceno' => $invoice]
+                    );
+                if($insert){
+                    return response()->json("success");
+                }
+
 
 
 //                $id=$request->customer;

@@ -146,6 +146,7 @@ function totalamount() {
     $('.total').each(function () {
         var amount=$(this).val()-0;
         total +=amount;
+
     })
       $('.totalamount').html(total);
 document.getElementById("totalamount").value=total;

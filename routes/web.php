@@ -151,5 +151,5 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 //Route::get('test','loginController@indexs')->name('test');
-//Route::post('testing','loginController@testing')->name('testing');
+Route::post('testing','loginController@testing')->name('testing');
 Route::get('test','loginController@test')->name('test');

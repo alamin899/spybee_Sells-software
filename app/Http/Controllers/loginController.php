@@ -66,7 +66,7 @@ public function test(){
 //       return $user;
 }
 //public function testing(Request $request){
-//    echo $request->customername;
+//    return view('h');
 //}
 
 }

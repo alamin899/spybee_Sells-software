@@ -40,11 +40,11 @@
                     <div class="row">
                         <div class="col form-control">
                             <label >Date</label><br>
-                            <input type="date" value="<?php echo date("Y-m-d"); ?>" name="selldate">
+                            <input type="date" value="<?php echo date("Y-m-d"); ?>" name="selldate" id="sellsdate">
                         </div>
                         <div class="col form-control">
                             <label>Sells No</label>
-                            <input type="text" name="sellsno" value="{{$invoices}}">
+                            <input type="text" name="sellsno" value="{{$invoices}}" id="sellsno">
                         </div>
                     </div>
 
@@ -64,7 +64,8 @@
                     </div>
                 </div>
                 <div class="col-md-1">
-                    <div class="row"><div class="col"><input type="" class="form-control btn btn-default" value="Add" id="addproduct"></div></div>
+                    {{--<input type="submit" class="form-control btn btn-default" value="Add" id="addproduct">--}}
+                    <div class="row"><div class="col"><button class="form-control btn btn-default" id="addproduct">ADD</button></div></div>
                 </div>
 
             </div>
@@ -83,7 +84,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr></tr>
+
                     </tbody>
                 </table>
             </div>
@@ -99,25 +100,49 @@
 
             </div>
 
-
-            <div class="card-footer">
-                {{--                <a href="{{route('test')}}"  class="btn btn-success btn-block sellsbutton" >Sells</a>--}}
-                <button class="btn btn-success btn-block">Sells</button>
-            </div>
         </form>
+            <div class="card-footer">
+                                <a href="{{route('test')}}"  class="btn btn-success btn-block sellsbutton" >Sells</a>
+                {{--<button class="btn btn-success btn-block" id="sellsallproduct">Sells</button>--}}
+            </div>
+
     </div>
 
 
     <script>
         $(document).ready(function () {
+
+            // total value of quantity an d unitprice
             $('div').delegate('#quantity,#unitprice','keyup',function () {
                 var unirprice=$("#unitprice").val();
                 var quantity=$("#quantity").val();
                 var total=unirprice*quantity;
                 console.log(total);
-                $('#totalprice').val(total)
+                 $('#totalprice').val(total)
+                 // totalamount();
             });
-            $('#addproduct').click(function () {
+            //  function totalamount() {
+            //      var total = 0;
+            //      $('.data_table tbody tr').each(function (row,tr) {
+            //          var totalamount=$(tr).find('td:eq(14)').text();
+            //           total+=totalamount;
+            //      });
+            //
+            //
+            //
+            //  }
+            // // console.log("total amount="+total);
+                // $('.totalamount').html(total);
+                // document.getElementById("totalamount").value=total;
+
+            // append product in data table
+
+            $('#addproduct').click(function (p) {
+                p.preventDefault();
+                // var customer=$('#customerdropdown').val();
+                // var sellsno=$('#sellsno').val();
+                var productid=$('#product').val();
+                // var selldate=$('#sellsdate').val();
                 var productname=$('#productname').val();
                 var description=$('#description').val();
                 var serial=$('#serial').val();
@@ -127,18 +152,28 @@
                 var totalprice=$('#totalprice').val();
                 $('.data_table tbody:last-child').append(
                     '<tr>'+
+                    '<td style="display:none;"><input type="hidden" name="productid[]" value="'+productid+'" ></td>'+
+                    '<td style="display:none;"><input type="hidden" name="pname[]" value="'+productname+'" ></td>'+
+                    '<td style="display:none;"><input type="hidden" name="pdesc[]" value="'+description+'" ></td>'+
+                    '<td style="display:none;"><input type="hidden" name="pserial[]" value="'+serial+'" ></td>'+
+                    '<td style="display:none;"><input type="hidden" name="pquantity[]" value="'+quantity+'" ></td>'+
+                    '<td style="display:none;"><input type="hidden" name="pwarrenty[]" value="'+warrenty+'" ></td>'+
+                    '<td style="display:none;"><input type="hidden" name="punitprice[]" value="'+unitprice+'" ></td>'+
+                    '<td style="display:none;"><input type="hidden" name="ptotalprice[]" value="'+totalprice+'" ></td>'+
                     '<td>'+productname+'</td>'+
                     '<td>'+description+'</td>'+
                     '<td>'+serial+'</td>'+
                     '<td>'+unitprice+'</td>'+
+                    '<td>'+quantity+'</td>'+
                     '<td>'+warrenty+'</td>'+
-                    '<td>'+warrenty+'</td>'+
-
                     '<td>'+totalprice+'</td>'+
                     '</tr>'
                 );
 
+
+
             });
+
             // product dropdown
             $('#product').change(function () {
                 var token = $("meta[name='csrf-token']").attr("content");
@@ -155,6 +190,34 @@
                         swal("OOpps","no something is wrong","error");
                     }
                 })
+            });
+
+            // submit all data in database
+
+            $("#sellsallproduct").click(function () {
+               var data_array=[];
+               $('.data_table tbody tr').each(function (row,tr) {
+                   if ($(tr).find('td:eq(0)').text()==""){
+
+                   }
+                   else
+                    var sub={
+                       // 'customer':$(tr).find('td:eq(0)').text(),
+                       // 'productid':$(tr).find('td:eq(1)').text(),
+                       // 'sellsno':$(tr).find('td:eq(2)').text(),
+                       // 'selldate':$(tr).find('td:eq(3)').text(),
+                       'productname':$(tr).find('td:eq(8)').text(),
+                       'description':$(tr).find('td:eq(9)').text(),
+                       'serial':$(tr).find('td:eq(10)').text(),
+                       'unitprice':$(tr).find('td:eq(11)').text(),
+                       'quantity':$(tr).find('td:eq(12)').text(),
+                       'warrenty':$(tr).find('td:eq(13)').text(),
+                       'totalprice':$(tr).find('td:eq(14)').text()
+                   };
+
+
+               });
+
             });
 
         });
