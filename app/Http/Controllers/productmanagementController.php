@@ -108,10 +108,6 @@ class productmanagementController extends Controller
 
 
 
-
-
-
-
             }
             public function addproduct(Request $request){
                      $insert=DB::table('products')->insert(
@@ -150,6 +146,17 @@ class productmanagementController extends Controller
                 <div class="col"><input type="text"    id="warrenty" name="pwarrenty" class="form-control" placeholder="warrenty" value="'.$product->pwarrenty.'"></div>
                 <div class="col"><input type="text"    id="unitprice" name="psellprice"  class="form-control" placeholder="unit price" value="'.$product->psellprice.'"></div>
                 <div class="col"><input type="text"    id="totalprice" name="totalprice"  class="form-control" placeholder="totalprice" ></div>';
+
+            }
+            public function productdatatable(){
+
+                $products=product::all();
+//                '.route('indicustupdate',['id'=>$customers->id]).'
+//                '. route('indivicustomerview',['id'=>$customers->id]) .'
+                return Datatables::of($products)
+                    ->addColumn('checkbox','<input type="checkbox" name="student_checkbox[]" class="student_checkbox" value="" >')
+                    ->rawColumns(['checkbox','action'])
+                    ->make(true);
 
             }
 }

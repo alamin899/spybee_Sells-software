@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\customer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\DataTables;
@@ -257,28 +258,38 @@ public function searchcustomer(Request $request){
         }
     }
     public function yajradataTables(){
-        $message="are you sure to delete?";
+
         $user=User::all();
 
-//        return Datatables::of($user)
-//            ->addColumn('action', 'action_button')
-//            ->rawColumns(['action'])
-//            ->addIndexColumn()
-//            ->make(true);
         return Datatables::of($user)
+            ->addColumn('checkbox','<input type="checkbox" name="student_checkbox[]" class="student_checkbox" value="" >')
             ->addColumn('action', function ($user) {
-//                '. route('admin.faculty.destroy', $faculties->id) .'
-//                <a href="'.route('deleteuser',['id'=>$user->id]).'" onclick="return confirm();"  class="delete btn btn-danger btn-sm">
-//                Dele</a>
+
                 return  '<a href="'.route('deleteuser',['id'=>$user->id]).'" onclick="return confirm();"  class="delete btn btn-danger btn-sm">
                 Dele</a>
                         <a href="'.route('individualuseredit',['id'=>$user->id]).'" class="btn btn-sm btn-primary"> Edit</a>
                         <a href="'. route('individualuserview',['id'=>$user->id]) .'" class="btn btn-sm btn-success"> View</a>  ';})
+            ->rawColumns(['checkbox','action'])
             ->make(true);
 
 
 
     }
+
+ public function customerdatatable(){
+        $customers=customer::all();
+
+//     <a href="'.route('deleteuser',['id'=>$user->id]).'" onclick="return confirm();"  class="delete btn btn-danger btn-sm">
+//     Dele</a>
+     return Datatables::of($customers)
+         ->addColumn('checkbox','<input type="checkbox" name="student_checkbox[]" class="student_checkbox" value="" >')
+         ->addColumn('action', function ($customers) {
+             return  '
+                        <a href="'.route('indicustupdate',['id'=>$customers->id]).'" class="btn btn-sm btn-primary"> Edit</a>
+                        <a href="'. route('indivicustomerview',['id'=>$customers->id]) .'" class="btn btn-sm btn-success"> View</a>  ';})
+         ->rawColumns(['checkbox','action'])
+         ->make(true);
+ }
 
 
 

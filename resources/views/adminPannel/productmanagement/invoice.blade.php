@@ -14,7 +14,7 @@
             <div class="row header">
                 <div class="col-12" style="text-align: center">
                     <h4>Spybee Network</h4>
-                    <h6>shop-412,LEVEL-4,MULTIPLANCENTER,NEW ELEPHENT ROAD,DHAKA</h6>
+                    <h6>House:1173(6th floor),Avenue:11,Road:12B,Mirpur DOHS,Dhaka-1216</h6>
                     <h6>01758845299</h6>
                     <h6>spybeenetwork@sypbee.net</h6>
                 </div>
@@ -105,7 +105,6 @@
                         </tr>
                         @endforeach
 
-{{--
 
                         </tbody>
                     </table>

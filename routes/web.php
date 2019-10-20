@@ -72,8 +72,8 @@ Route::group(['middleware'=>'check'],function(){
 
 
     //software user list
-//    yajra data tables
-    Route::get('yajradatatables','usermanagementController@yajradataTables')->name('yajradataTables');
+
+
     Route::get('user/list','usermanagementController@userlistview')->name('userlistview');
     Route::get('useralllist','usermanagementController@useralllist')->name('useralllist');
 
@@ -143,6 +143,19 @@ Route::group(['middleware'=>'check'],function(){
     //                End Vendor Management
     //======================================================================
     //this is for when user already login and want to dashbord by url
+
+    //======================================================================
+    //                 Start yajra data tables
+    //======================================================================
+    Route::get('yajradatatables','usermanagementController@yajradataTables')->name('yajradataTables');
+    Route::get('customerdatatable','usermanagementController@customerdatatable')->name('customerdatatable');
+    Route::get('productdatatable','productmanagementController@productdatatable')->name('productdatatable');
+
+
+    //======================================================================
+    //                 End yajra data tables
+    //======================================================================
+
 });
 
 
