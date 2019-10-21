@@ -16,7 +16,7 @@
         {{--testing--}}
         <form role="form" action="{{route('sellsproduct')}}" method="post" class="form-control">
             {{csrf_field()}}
-            <div class="row">
+            <div class="row" >
                 <div class="col-md-3 ">
 
                     <select class="form-control customer"  name="customer" id="customerdropdown">
@@ -29,7 +29,7 @@
                 </div>
                 <div class="col-md-4">
                     <select name="product" id="product" class="form-group form-control">
-                            <option>--select product--</option>
+                            <option value="0">--select product--</option>
                             @foreach($products as $product)
                                 <option  value="{{$product->id}}">{{$product->pname}}</option>
                             @endforeach
@@ -65,7 +65,7 @@
                 </div>
                 <div class="col-md-1">
                     {{--<input type="submit" class="form-control btn btn-default" value="Add" id="addproduct">--}}
-                    <div class="row"><div class="col"><button class="form-control btn btn-default" id="addproduct">ADD</button></div></div>
+                    <div class="row"><div class="col"><button class="form-control btn btn-default" id="addproduct" onclick="withoutvalue();">ADD</button></div></div>
                 </div>
 
             </div>
@@ -140,7 +140,7 @@
 
             $('#addproduct').click(function (p) {
                 p.preventDefault();
-                // var customer=$('#customerdropdown').val();
+                 var customer=$('#customerdropdown').val();
                 // var sellsno=$('#sellsno').val();
                 var productid=$('#product').val();
                 // var selldate=$('#sellsdate').val();
@@ -151,6 +151,21 @@
                 var warrenty=$('#warrenty').val();
                 var unitprice=$('#unitprice').val();
                 var totalprice=$('#totalprice').val();
+                 // start validation
+                if (customer=="0"){
+                    alert("please select customer")
+                }
+                else if (productid=="0" ){
+                    alert("please select product");
+                }
+                 else if (serial==""){
+                     alert("please fill up the serial field");
+                }
+                else if (quantity==""){
+                    alert("please fill up the quantity field");
+                }
+                // end validation
+                else
                 $('.data_table tbody:last-child').append(
                     '<tr>'+
                     '<td style="display:none;"><input type="hidden" name="productid[]" value="'+productid+'" ></td>'+
@@ -250,6 +265,14 @@
         $(document).ready(function () {
             $("#product").select2();
         });
+
+        function addbuttonfunction(){
+            // var prouct=$('#product').val();
+            // var customer=$('#customerdropdown').val();
+            $('#addproduct').val("hello");
+
+        }
+
     </script>
     {{--    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>--}}
     {{--    <script src="https://cdn.jsdelivr.net/bootstrap.tagsinput/0.8.0/bootstrap-tagsinput.min.js"></script>--}}

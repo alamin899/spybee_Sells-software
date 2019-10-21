@@ -139,13 +139,13 @@ class productmanagementController extends Controller
 
                 $product=DB::table('products')->where('id',$id)->first();
 
-                echo '<div class="col"><textarea type="text" id="productname" name="pname" class="form-control" placeholder="Product name" rows="2">'.$product->pname.'</textarea></div>
-                <div class="col"><textarea type="text" id="description" name="pshortdesc" class="form-control" placeholder="description" rows="2">'.$product->pshortdesc.'</textarea></div>
-                <div class="col"><textarea type="text" id="serial" name="pserialno" class="form-control" placeholder="serial" rows="2" required></textarea></div>
-                <div class="col"><input type="text"    id="quantity" name="quantity"  class="form-control" placeholder="quantity" required></div>
-                <div class="col"><input type="text"    id="warrenty" name="pwarrenty" class="form-control" placeholder="warrenty" value="'.$product->pwarrenty.'"></div>
-                <div class="col"><input type="text"    id="unitprice" name="psellprice"  class="form-control" placeholder="unit price" value="'.$product->psellprice.'"></div>
-                <div class="col"><input type="text"    id="totalprice" name="totalprice"  class="form-control" placeholder="totalprice" ></div>';
+                echo '<div class="col"><label>product name</label><textarea type="text" id="productname" name="pname" class="form-control" placeholder="Product name" rows="2">'.$product->pname.'</textarea></div>
+                <div class="col"><label>product Desc.</label><textarea type="text" id="description" name="pshortdesc" class="form-control" placeholder="description" rows="2">'.$product->pshortdesc.'</textarea></div>
+                <div class="col"><label>product Serial</label><textarea type="text" id="serial" name="pserialno" class="form-control" placeholder="" rows="2" required></textarea></div>
+                <div class="col"><label>Quantity</label><input type="text"    id="quantity" name="quantity"  class="form-control" placeholder="" required></div>
+                <div class="col"><label>Warrenty</label><input type="text"    id="warrenty" name="pwarrenty" class="form-control" placeholder="warrenty" value="'.$product->pwarrenty.'"></div>
+                <div class="col"><label>Unit Price</label><input type="text"    id="unitprice" name="psellprice"  class="form-control" placeholder="unit price" value="'.$product->psellprice.'"></div>
+                <div class="col"><label>Total Price</label><input type="text"    id="totalprice" name="totalprice"  class="form-control" placeholder="totalprice" ></div>';
 
             }
             public function productdatatable(){
