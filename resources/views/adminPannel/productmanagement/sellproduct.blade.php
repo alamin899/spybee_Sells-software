@@ -18,6 +18,7 @@
             {{csrf_field()}}
             <div class="row" >
                 <div class="col-md-3 ">
+                    <label>Select Customer</label>
 
                     <select class="form-control customer"  name="customer" id="customerdropdown">
                         <option value="0">--select Customer--</option>
@@ -28,6 +29,7 @@
 
                 </div>
                 <div class="col-md-4">
+                    <label>Select Product</label>
                     <select name="product" id="product" class="form-group form-control">
                             <option value="0">--select product--</option>
                             @foreach($products as $product)
@@ -71,7 +73,7 @@
             </div>
             <br>
             <div class="row">
-                <table class="table table-bordered data_table">
+                <table class="table table-bordered data_table" id="datatable">
                     <thead>
                     <tr>
                         <th>product</th>
@@ -94,7 +96,7 @@
                 <div class="pull-right" style="padding-right: 35px;" >
                     <label>Total Amount:</label>
                     <label class="totalamount"></label>
-                    <input type="hidden" name="totalamount" id="totalamount" value="3400">
+                    <input type="hidden" name="totalamount" id="totalamount" >
                 </div>
                 <br>
 
@@ -158,6 +160,15 @@
                 else if (productid=="0" ){
                     alert("please select product");
                 }
+                else if (productname=="" ){
+                    alert("please input product name");
+                }
+                else if (warrenty=="" ){
+                    alert("please input warrenty");
+                }
+                else if (unitprice=="" ){
+                    alert("please input product unit price");
+                }
                  else if (serial==""){
                      alert("please fill up the serial field");
                 }
@@ -186,9 +197,37 @@
                     '</tr>'
                 );
 
+                totalamount();
+
+                // reseat after add product
+               $('#productname').val("");
+               $('#description').val("");
+               $('#serial').val("");
+               $('#quantity').val("");
+               $('#warrenty').val("");
+               $('#unitprice').val("");
+               $('#totalprice').val("");
+
 
 
             });
+
+            // add total amount calculation
+
+            function totalamount() {
+                     var total = 0;
+                     $('.data_table tbody tr').each(function (row,tr) {
+                         var totalamount=$(tr).find('td:eq(14)').text()-0;
+                          total+=totalamount;
+                     });
+                $('.totalamount').html(total);
+                document.getElementById("totalamount").value=total;
+
+
+                 }
+
+
+
 
             // product dropdown
             $('#product').change(function () {
@@ -224,13 +263,13 @@
             tr.find('.total').val(amount);
             totalamount();
         });
+
         function totalamount() {
-            var total=0;
-            $('.total').each(function () {
-                var amount=$(this).val()-0;
+             var total;
+            var amount= $('.total').val();
+                // var amount=$(this).val()-0;
                 total +=amount;
-            })
-            $('.totalamount').html(total);
+
             document.getElementById("totalamount").value=total;
         }
     </script>
@@ -274,8 +313,6 @@
         }
 
     </script>
-    {{--    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>--}}
-    {{--    <script src="https://cdn.jsdelivr.net/bootstrap.tagsinput/0.8.0/bootstrap-tagsinput.min.js"></script>--}}
-    {{--    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>--}}
+
 
 @endsection()
