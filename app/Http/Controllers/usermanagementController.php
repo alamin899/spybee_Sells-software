@@ -20,8 +20,8 @@ class usermanagementController extends Controller
     }
     public function userlistview(){
 
-        $users=DB::table('users')->orderBy('id', 'desc')->get();
-        return view('adminPannel.usrmanagement.softwareuserlist',['users'=>$users]);
+//        $users=DB::table('users')->orderBy('id', 'desc')->get();
+        return view('adminPannel.usrmanagement.softwareuserlist');
     }
     public function userroleview(){
         $roles = DB::table('userroles')->get();

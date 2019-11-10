@@ -31,6 +31,8 @@ class loginController extends Controller
 //             if (!empty($remember)){
 //                 Auth::login(Auth::user()->id,true);
 //             }
+//           $userlist=User::all();
+
 
            return view('adminPannel.home.home');
 
@@ -57,13 +59,13 @@ public function submit(Request $request)
 }
 
 public function test(){
-//       $user=DB::table('sellproducts')
-//           ->join('customers','customers.id','=','sellproducts.customer_id')
-////           ->select('customers.customername')
-//           ->groupBy('sellproducts.customer_id')
-//           ->get();
+       $user=DB::table('sellproducts')
+           ->join('customers','customers.id','=','sellproducts.customer_id')
+//           ->select('customers.customername')
+           ->groupBy('sellproducts.sellsinvoice')
+           ->get();
 
-//       return $user;
+       return $user;
 }
 //public function testing(Request $request){
 //    return view('h');

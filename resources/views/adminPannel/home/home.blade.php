@@ -55,7 +55,7 @@
             <div class="small-box bg-danger">
                 <div class="inner">
 
-                    <h3>56</h3>
+                    <h3>13</h3>
 
                     <p>Total User</p>
                 </div>
