@@ -11,10 +11,10 @@
         <!-- /.card-header -->
         <!-- form start -->
         <div class="col card-body">
-            <table class="table table-bordered table-striped table-responsive-lg" id="productdatatable">
+            <table class="table table-bordered table-striped table-responsive-lg" id="producttable">
                 <thead>
                 <tr>
-                    <th>Select</th>
+                    <th>serial</th>
                     <th>Produc Name</th>
                     <th>Serial No</th>
                     <th>Model</th>
@@ -22,53 +22,56 @@
                     <th>Buying Date</th>
                     <th>buying price</th>
                     <th>Selling Price</th>
-                    <th>vendor</th>
+                    <th>Quantity</th>
                     <th>short descrp</th>
-{{--                    <th>Action</th>--}}
+                    <th>Action</th>
                 </tr>
                 </thead>
-{{--                <tr>--}}
-{{--                    <td><input type="checkbox" name="checkbox" id="checkbox"></td>--}}
-{{--                    <td>Panoromic Camera</td>--}}
-{{--                    <td>3l04395PAZ5C43D</td>--}}
-{{--                    <td>DHI-XV123</td>--}}
-{{--                    <td>DAHUA</td>--}}
-{{--                    <td>7/4/19</td>--}}
-{{--                    <td>2500</td>--}}
-{{--                    <td>3500</td>--}}
-{{--                    <td>VERBAL,motijheel</td>--}}
-{{--                    <td>vr cam 3mp panoramic camera</td>--}}
-{{--                    <td>--}}
-{{--                        <input type="submit" name="delete" value="view" class="btn btn-success btn-sm ">--}}
-{{--                        <input type="submit" name="delete" value="delete" class="btn btn-danger btn-sm ">--}}
-{{--                        <input type="submit" name="delete" value="edit" class="btn btn-primary btn-sm ">--}}
-{{--                    </td>--}}
-{{--                </tr>--}}
+{{--                @php($i=1)--}}
+                <tbody>
+
+                @foreach($products as $product)
+                    <tr>
+                        <td>{{$no++}}</td>
+                        <td>{{$product->pname}}</td>
+                        <td>{{$product->pserialno}}</td>
+                        <td>{{$product->pmodel}}</td>
+                        <td>{{$product->pbrand}}</td>
+                        <td>{{$product->pbuydate}}</td>
+                        <td>{{$product->pbuyprice}}</td>
+                        <td>{{$product->psellprice}}</td>
+                        <td>{{$product->quantity}}</td>
+                        <td>{{$product->pshortdesc}}</td>
+                        <td></td>
+                    </tr>
+                    @endforeach
+                </tbody>
+
             </table>
+            {{$products->links()}}
         </div>
     </div>
-    <script>
-        $(function () {
-            $('#productdatatable').DataTable({
-                processing:true,
-                serverSide:true,
-                ajax:'{!! route('productdatatable') !!}',
-                // columns:[
-                //     {data:'checkbox',orderable:false,searchable:false},
-                //     { data: 'pname', name: 'pname' },
-                //     { data: 'pserialno', name: 'pserialno' },
-                //     { data: 'pmodel', name: 'pmodel' },
-                //     { data: 'pbrand', name: 'pbrand' },
-                //     { data: 'pbuydate', name: 'pbuydate' },
-                //     { data: 'pbuyprice', name: 'pbuyprice' },
-                //     { data: 'psellprice', name: 'psellprice' },
-                //     { data: 'vendor', name: 'vendor' },
-                //     { data: 'pshortdesc', name: 'pshortdesc' },
-                //     // {data:'action', name:'action'}
-                //
-                // ]
-            });
-        });
+{{--    <script>--}}
+{{--        $(function () {--}}
+{{--            $('#producttable').DataTable({--}}
+{{--                processing:true,--}}
+{{--                serverSide:true,--}}
+{{--                ajax:'{!! route('productdatatable') !!}',--}}
+{{--                columns:[--}}
 
-    </script>
+{{--                    { data: 'pname', name: 'pname' },--}}
+{{--                    { data: 'pserialno', name: 'pserialno' },--}}
+{{--                    { data: 'pbrand', name: 'pbrand' },--}}
+{{--                    { data: 'pmodel', name: 'pmodel' },--}}
+{{--                    { data: 'pbuydate', name: 'pbuydate' },--}}
+{{--                    { data: 'pbuyprice', name: 'pbuyprice' },--}}
+{{--                    { data: 'psellprice', name: 'psellprice' },--}}
+{{--                    { data: 'pshortdesc', name: 'pshortdesc' },--}}
+{{--                     {data:'action', name:'action'}--}}
+
+{{--                ]--}}
+{{--            });--}}
+{{--        });--}}
+
+{{--    </script>--}}
 @endsection()

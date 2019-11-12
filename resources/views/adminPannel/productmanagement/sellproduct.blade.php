@@ -33,7 +33,7 @@
                     <select name="product" id="product" class="form-group form-control">
                             <option value="0">--select product--</option>
                             @foreach($products as $product)
-                                <option  value="{{$product->id}}">{{$product->pname}}</option>
+                                <option  value="{{$product->id}}">{{$product->pname}} ({{$product->quantity}})</option>
                             @endforeach
                         </select>
 

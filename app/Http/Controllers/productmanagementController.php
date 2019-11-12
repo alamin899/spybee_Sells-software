@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\customer;
 use App\product;
+use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -16,7 +17,8 @@ class productmanagementController extends Controller
         return view('adminPannel.productmanagement.productwarrenty');
     }
     public function viewproductlist(){
-        return view('adminPannel.productmanagement.viewproductlist');
+        $product=DB::table('products')->paginate(10);
+        return view('adminPannel.productmanagement.viewproductlist',['products'=>$product,'no'=>1]);
     }
     //sells product view
     public function viewsell(){
@@ -67,15 +69,19 @@ class productmanagementController extends Controller
 
             }
 
+//            this code is protect for update product
+            protected function updatequantity($pid,$pquantity){
+                $dbpqty= DB::table('products')->where('id','=',$pid)->first();
+                $db=$dbpqty->quantity;;
+                $finalquantity=$db-$pquantity;
+                return DB::table('products')->where('id','=',$pid)->update(['quantity'=>$finalquantity]);
+            }
+    //           End this code is protect for update product
+
             public function sellsproduct(Request $request){
                 $id=$request->customer;
                 $date=$request->selldate;
                 $invoice=$request->sellsno;
-
-
-//                $product=$request->product;
-
-//                $productlist=DB::table('products')->where('id',$product)->first();
 
 
                 $customer=DB::table('customers')->where('id',$id)->first();
@@ -95,6 +101,10 @@ class productmanagementController extends Controller
 
                         ]
                     );
+                   $pid=$request->productid[$key];
+                   $pqnt=$request->pquantity[$key];
+                   $this->updatequantity($pid,$pqnt);
+
                 }
                 if ($sells){
 
@@ -142,21 +152,27 @@ class productmanagementController extends Controller
                 echo '<div class="col"><label>product name</label><textarea type="text" id="productname" name="pname" class="form-control"  rows="2">'.$product->pname.'</textarea></div>
                 <div class="col"><label>product Desc.</label><textarea type="text" id="description" name="pshortdesc" class="form-control"  rows="2">'.$product->pshortdesc.'</textarea></div>
                 <div class="col"><label>product Serial</label><textarea type="text" id="serial" name="pserialno" class="form-control"  rows="2" ></textarea></div>
-                <div class="col"><label>Quantity</label><input type="text"    id="quantity" name="quantity"  class="form-control"  ></div>
+                <div class="col"><label>Quantity</label><input type="number"    id="quantity" name="quantity"  class="form-control"  ></div>
                 <div class="col"><label>Warrenty</label><input type="text"    id="warrenty" name="pwarrenty" class="form-control"  value="'.$product->pwarrenty.'"></div>
                 <div class="col"><label>Unit Price</label><input type="text"    id="unitprice" name="psellprice"  class="form-control"  value="'.$product->psellprice.'"></div>
                 <div class="col"><label>Total Price</label><input type="text"    id="totalprice" name="totalprice"  class="form-control"  ></div>';
 
             }
-            public function productdatatable(){
-
-                $products=product::all();
-//                '.route('indicustupdate',['id'=>$customers->id]).'
-//                '. route('indivicustomerview',['id'=>$customers->id]) .'
-                return Datatables::of($products)
-                    ->addColumn('checkbox','<input type="checkbox" name="student_checkbox[]" class="student_checkbox" value="" >')
-                    ->rawColumns(['checkbox','action'])
-                    ->make(true);
-
-            }
+//            public function productdatatable(){
+//
+//                $products=product::all();
+////                '.route('indicustupdate',['id'=>$customers->id]).'
+////                '. route('indivicustomerview',['id'=>$customers->id]) .'
+//                return Datatables::of($products)
+//                    ->addColumn('action', function ($products) {
+//
+//                        return  '<a href="" onclick="return confirm();"  class="delete btn btn-danger btn-sm">
+//                Dele</a>
+//                        <a href="" class="btn btn-sm btn-primary"> Edit</a>
+//                        <a href="" class="btn btn-sm btn-success"> View</a>  ';})
+//                    ->rawColumns(['action'])
+//                    ->make(true);
+////
+//
+//            }
 }

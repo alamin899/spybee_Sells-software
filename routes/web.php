@@ -149,7 +149,7 @@ Route::group(['middleware'=>'check'],function(){
     //======================================================================
     Route::get('yajradatatables','usermanagementController@yajradataTables')->name('yajradataTables');
     Route::get('customerdatatable','usermanagementController@customerdatatable')->name('customerdatatable');
-    Route::get('productdatatable','productmanagementController@productdatatable')->name('productdatatable');
+//    Route::get('productdatatable','productmanagementController@productdatatable')->name('productdatatable');
 
 
     //======================================================================
