@@ -175,4 +175,9 @@ class productmanagementController extends Controller
 ////
 //
 //            }
+
+public function productstock(){
+        $product=DB::table('products')->paginate(10);
+        return view('adminPannel.productmanagement.productstock',['products'=>$product]);
+}
 }

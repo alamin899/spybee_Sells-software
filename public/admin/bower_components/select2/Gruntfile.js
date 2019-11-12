@@ -364,7 +364,7 @@ module.exports = function (grunt) {
   /*
   // grunt-saucelabs appears to be broken with Travis altogether now.
   // Can't run Sauce Labs tests in pull requests
-  if (process.env.TRAVIS_PULL_REQUEST == 'false') {
+  if (process..env.TRAVIS_PULL_REQUEST == 'false') {
     ciTasks.push('saucelabs-qunit');
   }
   */

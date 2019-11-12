@@ -112,6 +112,8 @@ Route::group(['middleware'=>'check'],function(){
     Route::get('product/addwarrenty','productmanagementController@addproductwarrenty')->name('addproductwarrenty');
 
     Route::get('product/list','productmanagementController@viewproductlist')->name('viewproductlist');
+
+    Route::get('admin/stock','productmanagementController@productstock')->name('productstock');
     //======================================================================
     //              End Product Management Part
     //======================================================================

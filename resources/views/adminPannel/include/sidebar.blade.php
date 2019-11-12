@@ -170,7 +170,7 @@
 
 
                 <li class="nav-item has-treeview">
-                    <a href="#" class="nav-link">
+                    <a href="{{route('productstock')}}" class="nav-link">
                         <i class="nav-icon fa fa-archive"></i>
                         <p>
                             Stock Management

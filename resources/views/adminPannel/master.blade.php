@@ -37,6 +37,9 @@
     {{--external css--}}
     <link rel="stylesheet" href="{{asset('admin/external/menuEdit.css')}}">
 
+    {{--stockproduct table css--}}
+    <link rel="stylesheet" href="{{asset('admin/stocktable.css')}}">
+
     {{--dropdown searchable--}}
 
 {{--    datatable css--}}
